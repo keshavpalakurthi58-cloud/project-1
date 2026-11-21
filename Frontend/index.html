@@ -1,0 +1,1030 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuadPulse — Campus Events Hub</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#C8A24A',
+        'on-primary': '#10261C',
+        'primary-container': '#A88432',
+        'on-primary-container': '#10261C',
+        'secondary': '#D9B866',
+        'on-secondary': '#10261C',
+        'secondary-container': '#D9B866',
+        'on-secondary-container': '#10261C',
+        'tertiary': '#163828',
+        'on-tertiary': '#FAF6DF',
+        'tertiary-container': '#F2E394',
+        'on-tertiary-container': '#10261C',
+        'error': '#8C2D2E',
+        'on-error': '#FAF6DF',
+        'error-container': '#F7DFD8',
+        'on-error-container': '#4A1213',
+        'success': '#C8A24A',
+        'on-success': '#10261C',
+        'success-container': '#D9B866',
+        'on-success-container': '#10261C',
+        'warning': '#7A5416',
+        'on-warning': '#FAF6DF',
+        'warning-container': '#D9B866',
+        'on-warning-container': '#10261C',
+        'background': '#FAF6DF',
+        'on-background': '#10261C',
+        'surface': '#FAF6DF',
+        'surface-dim': '#EFE7B8',
+        'surface-bright': '#FDFBF0',
+        'surface-container-lowest': '#FDFBF0',
+        'surface-container-low': '#F5EFC9',
+        'surface-container': '#EFE7B8',
+        'surface-container-high': '#E8DDA3',
+        'surface-container-highest': '#DFD28E',
+        'on-surface': '#10261C',
+        'surface-variant': '#F5EFC9',
+        'on-surface-variant': '#354A3F',
+        'outline': '#C8A24A',
+        'outline-variant': '#C8A24A',
+        'inverse-surface': '#163828',
+        'inverse-on-surface': '#FAF6DF',
+        'inverse-primary': '#C8A24A',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '48px',
+        'page-margin': '24px',
+      },
+      fontFamily: {
+        'display': ['"Playfair Display"', 'sans-serif'],
+        'headline': ['"Playfair Display"', 'sans-serif'],
+        'title': ['"Lato"', 'sans-serif'],
+        'body': ['"Lato"', 'sans-serif'],
+        'label': ['"Lato"', 'sans-serif'],
+        'mono': ['"Lato"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['44px', { lineHeight: '54px', letterSpacing: '-0.44px', fontWeight: '700' }],
+        'display-lg-mobile': ['30px', { lineHeight: '38px', letterSpacing: '-0.3px', fontWeight: '700' }],
+        'headline-lg': ['32px', { lineHeight: '40px', letterSpacing: '-0.32px', fontWeight: '700' }],
+        'headline-md': ['24px', { lineHeight: '32px', letterSpacing: '-0.2px', fontWeight: '600' }],
+        'title-lg': ['20px', { lineHeight: '28px', letterSpacing: '0px', fontWeight: '700' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '700' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.1px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.56px', fontWeight: '700' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.48px', fontWeight: '700' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.44px', fontWeight: '700' }],
+        'mono-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.48px', fontWeight: '700' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '220ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Lato:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+    .ink-shadow { box-shadow: 4px 4px 0 #163828; }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased selection:bg-primary selection:text-on-primary">
+  <div id="top" class="min-h-[1024px] flex flex-col" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <!-- Top Sticky Deep Forest Ink Navbar with Role Switcher & Database ID Dropdowns -->
+    <header class="sticky top-0 z-40 bg-inverse-surface text-inverse-on-surface border-b-2 border-outline-variant">
+      <div class="max-w-7xl mx-auto px-gutter-md sm:px-gutter-lg h-16 flex items-center justify-between gap-gutter-sm">
+
+        <!-- Left Corner: Brand + Role Switcher Dropdown -->
+        <div class="flex items-center gap-gutter-sm sm:gap-gutter-md min-w-0">
+          <a href="index.html" class="flex items-center gap-2.5 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md">
+            <div class="w-9 h-9 rounded-md bg-primary text-on-primary border border-outline-variant flex items-center justify-center">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">bolt</span>
+            </div>
+            <div class="hidden sm:flex flex-col">
+              <span data-design-text-token="title-md" class="font-headline text-title-md text-inverse-on-surface leading-none">QuadPulse</span>
+              <span data-design-text-token="label-sm" class="font-label text-label-sm text-surface-container-low">Guru Nanak University</span>
+            </div>
+          </a>
+
+          <div class="h-6 w-px bg-outline-variant hidden sm:block" aria-hidden="true"></div>
+
+          <!-- Corner Role Switcher Dropdown -->
+          <div data-component-id="dropdown-menu-with-icon" data-component-type="dropdown-menu" data-component-variant="with-icon" class="relative inline-block shrink-0">
+            <button id="roleDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="roleDropdownMenu" class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-2 rounded-md bg-secondary text-on-secondary border border-outline-variant font-label text-label-md whitespace-nowrap hover:bg-primary transition-colors duration-state-change focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+              <span id="roleBtnIcon" class="material-symbols-outlined text-[18px]" aria-hidden="true">school</span>
+              <span id="roleBtnLabel" data-design-text-token="label-md" class="whitespace-nowrap">Role: Student</span>
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">expand_more</span>
+            </button>
+
+            <ul id="roleDropdownMenu" role="menu" hidden class="absolute left-0 mt-2 w-64 rounded-lg bg-surface-container-lowest border-2 border-outline-variant ink-shadow py-1.5 z-50 text-on-surface">
+              <li role="presentation" class="px-3.5 py-1.5">
+                <span data-design-text-token="label-sm" class="font-label text-label-sm text-on-surface-variant uppercase tracking-wider">Switch Active Role</span>
+              </li>
+              <li role="menuitem" data-role="students" class="role-option px-3.5 py-2.5 flex items-start gap-3 hover:bg-surface-container-low cursor-pointer transition-colors duration-state-change">
+                <span class="material-symbols-outlined text-[18px] text-on-surface mt-0.5" aria-hidden="true">school</span>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Student</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Browse &amp; register for events</span>
+                </div>
+              </li>
+              <li role="menuitem" data-role="faculty" class="role-option px-3.5 py-2.5 flex items-start gap-3 hover:bg-surface-container-low cursor-pointer transition-colors duration-state-change">
+                <span class="material-symbols-outlined text-[18px] text-on-surface mt-0.5" aria-hidden="true">badge</span>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Faculty</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Endorse clubs &amp; verify ODs</span>
+                </div>
+              </li>
+              <li role="menuitem" data-role="organizer" class="role-option px-3.5 py-2.5 flex items-start gap-3 hover:bg-surface-container-low cursor-pointer transition-colors duration-state-change">
+                <span class="material-symbols-outlined text-[18px] text-on-surface mt-0.5" aria-hidden="true">campaign</span>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Organizer</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Create events + register</span>
+                </div>
+              </li>
+              <li role="separator" class="my-1 border-t border-outline-variant/40"></li>
+              <li role="menuitem" data-role="admin" class="role-option px-3.5 py-2.5 flex items-start gap-3 hover:bg-surface-container-low cursor-pointer transition-colors duration-state-change">
+                <span class="material-symbols-outlined text-[18px] text-tertiary mt-0.5" aria-hidden="true">analytics</span>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Admin</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">View campus reports &amp; metrics</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right Corner: Database ID Selector Dropdown + Streak Pill -->
+        <div class="flex items-center gap-gutter-sm shrink-0">
+          <div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-on-secondary border border-outline-variant">
+            <span class="w-2 h-2 rounded-full bg-inverse-on-surface inline-block" aria-hidden="true"></span>
+            <span id="streakLabel" data-design-text-token="label-sm" class="font-label text-label-sm tabular-nums">3-Wk Streak</span>
+          </div>
+
+          <a href="profile.html" aria-label="My QR Wallet" class="relative inline-flex items-center justify-center w-9 h-9 rounded-md bg-secondary text-on-secondary border border-outline-variant hover:bg-surface-container-low transition-colors duration-state-change shrink-0">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">qr_code_2</span>
+          </a>
+
+          <!-- Corner Database ID Selector Dropdown -->
+          <div data-component-id="dropdown-menu-standard" data-component-type="dropdown-menu" data-component-variant="standard" class="relative inline-block shrink-0">
+            <button id="idDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="idDropdownMenu" class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-2 rounded-md bg-secondary border border-outline-variant text-on-secondary font-label text-label-md whitespace-nowrap hover:bg-primary transition-colors duration-state-change focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+              <span class="material-symbols-outlined text-[18px] text-on-secondary" aria-hidden="true">database</span>
+              <span id="idBtnLabel" data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-secondary whitespace-nowrap">STU-2026-041</span>
+              <span class="material-symbols-outlined text-[18px] text-on-secondary" aria-hidden="true">expand_more</span>
+            </button>
+
+            <ul id="idDropdownMenu" role="menu" hidden class="absolute right-0 mt-2 w-72 rounded-lg bg-surface-container-lowest border-2 border-outline-variant ink-shadow py-1.5 z-50 text-on-surface">
+              <li role="presentation" class="px-3.5 py-1.5 flex items-center justify-between border-b border-outline-variant/40 mb-1">
+                <span data-design-text-token="label-sm" class="font-label text-label-sm text-on-surface-variant uppercase tracking-wider">Fetched DB IDs</span>
+                <span id="dbCountBadge" data-design-text-token="mono-sm" class="font-mono text-mono-sm text-success">Syncing...</span>
+              </li>
+              <div id="idDropdownItems"></div>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-gutter-md sm:px-gutter-lg pt-gutter-xl pb-24 flex flex-col gap-gutter-xl">
+
+      <!-- Role Context & Ink Black Hero Spotlight -->
+      <section class="bg-inverse-surface text-inverse-on-surface border-2 border-outline-variant ink-shadow rounded-xl p-gutter-lg md:p-gutter-xl flex flex-col lg:flex-row lg:items-center justify-between gap-gutter-lg">
+        <div class="flex flex-col gap-gutter-sm max-w-2xl">
+          <div class="flex flex-wrap items-center gap-2">
+            <span id="activeRoleBadge" data-design-text-token="label-sm" class="font-label text-label-sm px-2.5 py-1 rounded-full bg-secondary text-on-secondary border border-primary">
+              Student Mode · Registration &amp; Passes
+            </span>
+            <span id="activeUserChip" data-design-text-token="mono-sm" class="font-mono text-mono-sm px-2.5 py-1 rounded-full bg-secondary text-on-secondary border border-primary/40">
+              ID: STU-2026-041
+            </span>
+          </div>
+          <h1 id="heroTitle" data-design-text-token="display-lg" class="font-headline text-display-lg-mobile md:text-display-lg text-inverse-on-surface text-balance">
+            What’s happening on campus this week
+          </h1>
+          <p id="heroSubtitle" data-design-text-token="body-lg" class="font-body text-body-lg text-surface-container-low text-pretty">
+            Grab your spot in one tap, generate your instant QR pass, and track live seat counts.
+          </p>
+        </div>
+
+        <!-- Role-Specific Primary Action Slot -->
+        <div class="flex flex-wrap items-center gap-gutter-sm shrink-0">
+          <!-- Visible for Organizer -->
+          <button id="openCreateEventBtn" data-component-id="button-with-icon" data-component-type="button" data-component-variant="with-icon" type="button" class="hidden inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-secondary text-on-secondary font-label text-label-lg transition-colors duration-state-change ease-state-change hover:bg-secondary-container hover:text-on-secondary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">add_circle</span>
+            <span data-design-text-token="label-lg">Create Event</span>
+          </button>
+
+          <!-- Visible for Students & Organizer -->
+          <button id="myRegisteredFilterBtn" data-component-id="button-secondary" data-component-type="button" data-component-variant="secondary" type="button" class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-surface-container-low text-on-surface border border-outline-variant font-label text-label-lg transition-colors duration-state-change hover:bg-surface-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+            <span class="material-symbols-outlined text-[18px] text-on-surface" aria-hidden="true">confirmation_number</span>
+            <span id="myRegisteredBtnText" data-design-text-token="label-lg">My Passes (0)</span>
+          </button>
+
+          <a href="profile.html" class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-primary text-on-primary font-label text-label-lg transition-colors duration-state-change hover:bg-primary-container">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">wallet</span>
+            <span>QR Wallet</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- STUDENT & ORGANIZER VIEW: Event Discovery + Registration -->
+      <section id="eventsDiscoverySection" class="flex flex-col gap-gutter-lg">
+
+        <!-- Category Filter Chips & Search Bar -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-gutter-md">
+          <div class="flex flex-wrap items-center gap-gutter-sm" role="tablist" aria-label="Event categories">
+            <button type="button" data-category="All" class="category-chip px-3.5 py-1.5 rounded-full bg-primary text-on-primary font-label text-label-md transition-colors duration-state-change">All Events</button>
+            <button type="button" data-category="Tech &amp; Hackathons" class="category-chip px-3.5 py-1.5 rounded-full bg-secondary-container border border-outline-variant text-on-secondary-container font-label text-label-md hover:bg-secondary hover:text-on-secondary transition-colors duration-state-change">Tech &amp; Hackathons</button>
+            <button type="button" data-category="Music &amp; Arts" class="category-chip px-3.5 py-1.5 rounded-full bg-secondary-container border border-outline-variant text-on-secondary-container font-label text-label-md hover:bg-secondary hover:text-on-secondary transition-colors duration-state-change">Music &amp; Arts</button>
+            <button type="button" data-category="Design &amp; Media" class="category-chip px-3.5 py-1.5 rounded-full bg-secondary-container border border-outline-variant text-on-secondary-container font-label text-label-md hover:bg-secondary hover:text-on-secondary transition-colors duration-state-change">Design &amp; Media</button>
+            <button type="button" data-category="Engineering" class="category-chip px-3.5 py-1.5 rounded-full bg-secondary-container border border-outline-variant text-on-secondary-container font-label text-label-md hover:bg-secondary hover:text-on-secondary transition-colors duration-state-change">Engineering</button>
+            <button type="button" data-category="Completed" class="category-chip px-3.5 py-1.5 rounded-full bg-secondary-container border border-outline-variant text-on-secondary-container font-label text-label-md hover:bg-secondary hover:text-on-secondary transition-colors duration-state-change">Completed Events</button>
+          </div>
+
+          <div class="relative w-full md:w-72">
+            <span class="material-symbols-outlined text-[18px] text-on-surface-variant absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true">search</span>
+            <input id="eventSearchInput" type="search" placeholder="Search events or clubs..." class="w-full pl-9 pr-3.5 py-2 rounded-md bg-surface-container-lowest border border-outline-variant text-body-md text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:ring-1 focus:ring-primary">
+          </div>
+        </div>
+
+        <!-- Event Cards Grid -->
+        <div id="eventsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-gutter-lg items-stretch">
+          <div class="col-span-full bg-surface-container-lowest border border-outline-variant rounded-lg p-gutter-xl text-center">
+            <p class="font-title text-title-md text-on-surface">Loading live Guru Nanak University events...</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Organizer Create Event Modal -->
+    <div id="createEventModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-on-surface/40 p-gutter-md" role="dialog" aria-modal="true" aria-labelledby="createModalTitle">
+      <div class="bg-surface-container-lowest border border-outline-variant rounded-xl w-full max-w-lg p-gutter-lg shadow-xl flex flex-col gap-gutter-md">
+        <header class="flex items-center justify-between gap-4 border-b border-outline-variant/60 pb-gutter-sm">
+          <div>
+            <h2 id="createModalTitle" data-design-text-token="headline-md" class="font-headline text-headline-md text-on-surface">Create Campus Event</h2>
+            <p id="createModalOrgBadge" data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface">Publishing as ORG-TECH-09</p>
+          </div>
+          <button id="closeCreateModalBtn" data-component-id="button-icon" data-component-type="button" data-component-variant="icon" type="button" aria-label="Close dialog" class="inline-flex items-center justify-center w-9 h-9 rounded-md bg-surface-container-low text-on-surface-variant hover:text-on-surface transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">close</span>
+          </button>
+        </header>
+
+        <form id="createEventForm" class="flex flex-col gap-gutter-md">
+          <div class="flex flex-col gap-1">
+            <label for="newEventTitle" class="font-label text-label-md text-on-surface">Event Title</label>
+            <input id="newEventTitle" type="text" required placeholder="e.g. AI Agents Campus Workshop" class="px-3 py-2 rounded-md bg-surface border border-outline-variant text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary">
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-gutter-md">
+            <div class="flex flex-col gap-1">
+              <label for="newEventCategory" class="font-label text-label-md text-on-surface">Category</label>
+              <select id="newEventCategory" class="px-3 py-2 rounded-md bg-surface border border-outline-variant text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary">
+                <option value="Tech &amp; Hackathons">Tech &amp; Hackathons</option>
+                <option value="Music &amp; Arts">Music &amp; Arts</option>
+                <option value="Design &amp; Media">Design &amp; Media</option>
+                <option value="Engineering">Engineering</option>
+              </select>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="newEventCapacity" class="font-label text-label-md text-on-surface">Seat Capacity</label>
+              <input id="newEventCapacity" type="number" min="10" max="500" value="80" required class="px-3 py-2 rounded-md bg-surface border border-outline-variant text-body-md text-on-surface tabular-nums focus:border-primary focus:ring-1 focus:ring-primary">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-gutter-md">
+            <div class="flex flex-col gap-1">
+              <label for="newEventTime" class="font-label text-label-md text-on-surface">Date &amp; Time</label>
+              <input id="newEventTime" type="text" required value="Mon, Nov 24 · 5:30 PM" class="px-3 py-2 rounded-md bg-surface border border-outline-variant text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary">
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="newEventLocation" class="font-label text-label-md text-on-surface">Venue</label>
+              <input id="newEventLocation" type="text" required value="Student Union 204" class="px-3 py-2 rounded-md bg-surface border border-outline-variant text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary">
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label for="newEventDesc" class="font-label text-label-md text-on-surface">Short Pitch</label>
+            <textarea id="newEventDesc" rows="2" required placeholder="What makes this event unmissable?" class="px-3 py-2 rounded-md bg-surface border border-outline-variant text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary"></textarea>
+          </div>
+
+          <footer class="flex items-center justify-end gap-gutter-sm pt-2 border-t border-outline-variant/60">
+            <button type="button" id="cancelCreateModalBtn" class="px-4 py-2 rounded-md bg-surface-container-low text-on-surface font-label text-label-md hover:bg-surface-container transition-colors duration-state-change">Cancel</button>
+            <button type="submit" class="px-5 py-2 rounded-md bg-secondary text-on-secondary font-label text-label-lg hover:bg-secondary-container hover:text-on-secondary-container transition-colors duration-state-change">Publish Event</button>
+          </footer>
+        </form>
+      </div>
+    </div>
+
+    <!-- Recap & Winners Modal -->
+    <div id="recapModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-on-surface/40 p-gutter-md" role="dialog" aria-modal="true" aria-labelledby="recapModalTitle">
+      <div class="bg-surface-container-lowest border border-outline-variant rounded-xl w-full max-w-lg p-gutter-lg shadow-xl flex flex-col gap-gutter-md">
+        <header class="flex items-start justify-between gap-4 border-b border-outline-variant/60 pb-gutter-sm">
+          <div>
+            <span data-design-text-token="label-sm" class="font-label text-label-sm px-2.5 py-0.5 rounded-full bg-secondary text-on-secondary">Completed Event Recap</span>
+            <h2 id="recapModalTitle" data-design-text-token="headline-md" class="font-headline text-headline-md text-on-surface mt-1">GNU Systems &amp; UI Jam</h2>
+            <p id="recapModalMeta" data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Oct 18, 2026 · Innovation Hub · 240 participated</p>
+          </div>
+          <button id="closeRecapModalBtn" type="button" aria-label="Close recap dialog" class="inline-flex items-center justify-center w-9 h-9 rounded-md bg-surface-container-low text-on-surface-variant hover:text-on-surface transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">close</span>
+          </button>
+        </header>
+
+        <p id="recapModalSummary" data-design-text-token="body-md" class="font-body text-body-md text-on-surface-variant text-pretty">
+          Summary of the event.
+        </p>
+
+        <div class="bg-surface-container-low border border-outline-variant rounded-lg p-gutter-md flex flex-col gap-2">
+          <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Winners &amp; Highlights</span>
+          <ul id="recapModalWinners" class="flex flex-col gap-1.5 text-body-sm font-body text-on-surface-variant">
+            <!-- Populated dynamically -->
+          </ul>
+        </div>
+
+        <footer class="flex items-center justify-end pt-2 border-t border-outline-variant/60">
+          <button type="button" id="doneRecapModalBtn" class="px-5 py-2 rounded-md bg-primary text-on-primary font-label text-label-md hover:bg-primary-container transition-colors duration-state-change">Done</button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Toast Feedback -->
+    <div id="toastBanner" class="fixed bottom-6 right-6 z-50 hidden items-center gap-2.5 px-4 py-3 rounded-lg bg-inverse-surface text-inverse-on-surface shadow-lg">
+      <span class="material-symbols-outlined text-[18px] text-inverse-primary" aria-hidden="true">check_circle</span>
+      <span id="toastMessage" data-design-text-token="body-md" class="font-body text-body-md">Action completed</span>
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      const API_BASE = "https://project-1-q5j9.onrender.com";
+
+      const categoryImages = {
+        'Tech & Hackathons': 'https://lh3.googleusercontent.com/aida/ALJJyrDcnLs-S_Y72zm6rPNrNNxWc92xzqyEu_oSqJHzBdpcqm8YKHVIiW_xETJXiMDTEC4lnqR3vECuhpuXfEZWwr-hyDD_Bgz-g6b4xhB1jwOSeEOP8c-Tb3ihAVPskyJwZAg7JkFcD5gMxw-yH8T5ZkbhDzIc1nxISLO1OQt906nErbiircmESuy8M1iZiN8L-BSjJdcxy7Ux8wYQVWRwl3dbULJB5h1OPul9PlJIlZDUou3aIGkbWFv9yg',
+        'Music & Arts': 'https://lh3.googleusercontent.com/aida/ALJJyrD-khBMJjJjmwaZjzwyZtLU7iZtWC8jVlNAz-T1e3kHvgRRmcC39jfVdhdZsrT6fyL2AxfOfQSx_9_XLZn6R536OWZh2kzii401lXiiWfudHiuRW85M09CKWeOam3w05Ffs2_nu-0Cii069L3upRgillO5q4fCHnbO8C50Vm-4OeOntIaSUxvH48_NvytOGXP4-6jpnJuZW6EJ6oXuixhNy06jvosT0QemNNeXJ7AsbHTe9L5pDzpFvKGBG',
+        'Design & Media': 'https://lh3.googleusercontent.com/aida/ALJJyrDfYYKXjf8NvSIB1Jej399BlpJlxzeGAHF356wRPSmNnwatCkW4B5JQnZEvi91SWxRYsNu8ia81S0kc_RFj_LWBoaMLNrVLQ6HUkSXLZuH2kOlEE-W-S34iMkdrA3r8FHml6PM9ZCQJS3qTrK6sZoiB3aXR0mLb2WB8sbKek3D6ho-cZKGQA0dmLub7cv7jq-KCXClK7XnY4Bmakn4_wyenwL4cPPaBl0-iWSePfMralpEVHULu1y9gm99Yr-XN',
+        'Engineering': 'https://lh3.googleusercontent.com/aida/ALJJyrDgT2ZV9xAB0iRZ0XU_PBDO3Zt_kQWr0P4dfoy8e2aAHCaESip9KbAoUqBhVKjTeTaugCZqEhSKiF4kPj7gK9SBK--tIaNnb_4H25cJghulpL_gn7YeZJuYBKouKETvN6Qcz5p5THLj1k3I2YWGTCg0yjT9uJPcxjve7hjx4XxIWrNVm1OLysHsnioSETBcXp1KUK8k_3ugDJUNZ-rUZLoK2xWjn3g8N1fUqQh2N_H_1rkynKVe-oxio3mIzTM'
+      };
+
+      const completedEventsData = [
+        {
+          id: 'past-1',
+          title: 'GNU Systems & UI Jam',
+          category: 'Tech & Hackathons',
+          time: 'Oct 18, 2026',
+          location: 'Innovation Hub Atrium',
+          organizerId: 'ORG-TECH-09',
+          participants: 240,
+          image: categoryImages['Tech & Hackathons'],
+          description: '24-hour systems & interface jam with 42 shipped prototypes and live alumni critiques.',
+          winners: [
+            '1st Place: Team PulseGrid — Campus Energy Optimizer',
+            '2nd Place: Team VectorLab — Accessible Transit Router',
+            'Best UI Craft: Team SlateCraft — Student Study Planner'
+          ]
+        },
+        {
+          id: 'past-2',
+          title: 'Monsoon Indie Jam',
+          category: 'Music & Arts',
+          time: 'Oct 05, 2026',
+          location: 'Main Quad Lawn',
+          organizerId: 'ORG-SPRT-12',
+          participants: 310,
+          image: categoryImages['Music & Arts'],
+          description: 'Evening acoustic & indie showcase featuring five GNU student bands and open mic sets.',
+          winners: [
+            'Audience Choice: The Courtyard Echoes',
+            'Best Original Track: Maya & The Synths ("Late Library")',
+            'Best Acoustic Set: Aarav & Trio'
+          ]
+        },
+        {
+          id: 'past-3',
+          title: 'Design Systems Workshop',
+          category: 'Design & Media',
+          time: 'Sep 19, 2026',
+          location: 'North Studio 3B',
+          organizerId: 'ORG-ARTS-04',
+          participants: 112,
+          image: categoryImages['Design & Media'],
+          description: 'Hands-on typography, token architecture, and rapid prototyping sprint for student builders.',
+          winners: [
+            'Best Component Kit: Team Gridline',
+            'Best Micro-Interaction: Team MotionMint',
+            'Faculty Pick: Team EditorialNine'
+          ]
+        },
+        {
+          id: 'past-4',
+          title: 'RoboWars Qualifier',
+          category: 'Engineering',
+          time: 'Sep 07, 2026',
+          location: 'Engineering Hall',
+          organizerId: 'ORG-TECH-09',
+          participants: 185,
+          image: categoryImages['Engineering'],
+          description: 'Autonomous rover navigation and obstacle-avoidance qualifiers hosted by the GNU Robotics Lab.',
+          winners: [
+            '1st Place: Rover X-14 (Autonomous Time: 28.4s)',
+            '2nd Place: MechVanguard Mk II',
+            'Best Sensor Fusion: Team LidarCore'
+          ]
+        }
+      ];
+
+      const roleMeta = {
+        students: {
+          label: 'Student',
+          icon: 'school',
+          btnClass: 'bg-primary text-on-primary hover:bg-primary-container',
+          badgeText: 'Student Mode · Registration & Passes',
+          badgeClass: 'bg-secondary text-on-secondary',
+          heroTitle: 'What’s happening on campus this week',
+          heroSubtitle: 'Grab your spot in one tap, generate your instant QR pass, and track live seat counts.'
+        },
+        organizer: {
+          label: 'Organizer',
+          icon: 'campaign',
+          btnClass: 'bg-secondary text-on-secondary hover:bg-secondary/90',
+          badgeText: 'Organizer Mode · Create + Register',
+          badgeClass: 'bg-secondary text-on-secondary',
+          heroTitle: 'Host campus moments & join fellow clubs',
+          heroSubtitle: 'Publish new events directly to the student feed with automatic venue clash protection.'
+        }
+      };
+
+      let allProfiles = [];
+      let dbIdsByRole = { students: [], organizer: [] };
+      let eventsData = [];
+      let userRegistrationsMap = {};
+
+      let activeRole = 'students';
+      let activeDbUser = null;
+      let activeCategory = 'All';
+      let onlyMyPasses = false;
+      let searchQuery = '';
+
+      const roleBtn = document.getElementById('roleDropdownBtn');
+      const roleMenu = document.getElementById('roleDropdownMenu');
+      const roleBtnIcon = document.getElementById('roleBtnIcon');
+      const roleBtnLabel = document.getElementById('roleBtnLabel');
+
+      const idBtn = document.getElementById('idDropdownBtn');
+      const idMenu = document.getElementById('idDropdownMenu');
+      const idBtnLabel = document.getElementById('idBtnLabel');
+      const idDropdownItems = document.getElementById('idDropdownItems');
+      const dbCountBadge = document.getElementById('dbCountBadge');
+      const streakLabel = document.getElementById('streakLabel');
+
+      const activeRoleBadge = document.getElementById('activeRoleBadge');
+      const activeUserChip = document.getElementById('activeUserChip');
+      const heroTitle = document.getElementById('heroTitle');
+      const heroSubtitle = document.getElementById('heroSubtitle');
+
+      const openCreateEventBtn = document.getElementById('openCreateEventBtn');
+      const myRegisteredFilterBtn = document.getElementById('myRegisteredFilterBtn');
+      const myRegisteredBtnText = document.getElementById('myRegisteredBtnText');
+
+      const eventsGrid = document.getElementById('eventsGrid');
+      const eventSearchInput = document.getElementById('eventSearchInput');
+      const createEventModal = document.getElementById('createEventModal');
+      const createModalOrgBadge = document.getElementById('createModalOrgBadge');
+      const createEventForm = document.getElementById('createEventForm');
+      const toastBanner = document.getElementById('toastBanner');
+      const toastMessage = document.getElementById('toastMessage');
+
+      let toastTimer = null;
+      function showToast(msg) {
+        toastMessage.textContent = msg;
+        toastBanner.classList.remove('hidden');
+        toastBanner.classList.add('flex');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastBanner.classList.add('hidden');
+          toastBanner.classList.remove('flex');
+        }, 3000);
+      }
+
+      function toggleMenu(btn, menu, otherBtn, otherMenu) {
+        const isOpen = !menu.hasAttribute('hidden');
+        if (otherMenu) {
+          otherMenu.setAttribute('hidden', '');
+          otherBtn.setAttribute('aria-expanded', 'false');
+        }
+        if (isOpen) {
+          menu.setAttribute('hidden', '');
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          menu.removeAttribute('hidden');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      roleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu(roleBtn, roleMenu, idBtn, idMenu);
+      });
+
+      idBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu(idBtn, idMenu, roleBtn, roleMenu);
+      });
+
+      document.addEventListener('click', () => {
+        roleMenu.setAttribute('hidden', '');
+        roleBtn.setAttribute('aria-expanded', 'false');
+        idMenu.setAttribute('hidden', '');
+        idBtn.setAttribute('aria-expanded', 'false');
+      });
+
+      document.querySelectorAll('.role-option').forEach((el) => {
+        el.addEventListener('click', async () => {
+          const nextRole = el.getAttribute('data-role');
+          if (nextRole === 'faculty') {
+            window.location.href = 'faculty.html';
+            return;
+          }
+          if (nextRole === 'admin') {
+            window.location.href = 'admin.html';
+            return;
+          }
+          if (nextRole !== activeRole && dbIdsByRole[nextRole]?.length) {
+            activeRole = nextRole;
+            activeDbUser = dbIdsByRole[activeRole][0];
+            localStorage.setItem('qp_active_user', JSON.stringify(activeDbUser));
+            onlyMyPasses = false;
+            await loadUserPasses();
+          }
+          roleMenu.setAttribute('hidden', '');
+          roleBtn.setAttribute('aria-expanded', 'false');
+          updateUI();
+          showToast(`Switched to ${roleMeta[activeRole].label} view`);
+        });
+      });
+
+      async function loadUserPasses() {
+        userRegistrationsMap = {};
+        if (!activeDbUser || !activeDbUser.id) return;
+        try {
+          const res = await fetch(`${API_BASE}/api/me/registrations?user_id=${encodeURIComponent(activeDbUser.id)}`);
+          const regs = await res.json();
+          if (Array.isArray(regs)) {
+            regs.forEach((r) => {
+              userRegistrationsMap[r.event_id] = r;
+            });
+          }
+        } catch (err) {
+          console.error('Failed loading user passes:', err);
+        }
+      }
+
+      async function initLiveData() {
+        try {
+          const [profilesRes, eventsRes] = await Promise.all([
+            fetch(`${API_BASE}/api/profiles`),
+            fetch(`${API_BASE}/api/events`)
+          ]);
+
+          allProfiles = await profilesRes.json();
+          const rawEvents = await eventsRes.json();
+
+          dbIdsByRole.students = allProfiles.filter((p) => p.role === 'student').map((p) => ({
+            id: p.id,
+            campus_id: p.campus_id,
+            name: p.full_name || p.email,
+            dept: p.department || 'GNU Student',
+            streak: '3-Wk Streak'
+          }));
+
+          dbIdsByRole.organizer = allProfiles.filter((p) => p.role === 'organizer').map((p) => ({
+            id: p.id,
+            campus_id: p.campus_id,
+            name: p.club_name || p.full_name,
+            dept: p.department || 'Club Lead',
+            streak: 'Host Mode'
+          }));
+
+          const saved = JSON.parse(localStorage.getItem('qp_active_user') || 'null');
+          if (saved && dbIdsByRole[activeRole].some((u) => u.id === saved.id)) {
+            activeDbUser = dbIdsByRole[activeRole].find((u) => u.id === saved.id);
+          } else {
+            activeDbUser = dbIdsByRole[activeRole][0] || { id: '', campus_id: 'STU-2026-041', name: 'Aarav Patel', dept: 'CSE', streak: 'Active' };
+          }
+          localStorage.setItem('qp_active_user', JSON.stringify(activeDbUser));
+
+          eventsData = (Array.isArray(rawEvents) ? rawEvents : []).map((ev) => ({
+            id: ev.id,
+            title: ev.title,
+            category: ev.category || 'Tech & Hackathons',
+            time: ev.event_date || 'Upcoming',
+            location: ev.venue || 'GNU Campus',
+            organizerId: (ev.users && ev.users.campus_id) ? ev.users.campus_id : 'ORG-TECH-09',
+            registered: ev.registered_count || 0,
+            capacity: ev.capacity || 50,
+            waitlistCount: ev.waitlist_count || 0,
+            image: categoryImages[ev.category] || categoryImages['Tech & Hackathons'],
+            description: ev.description || 'Official Guru Nanak University campus session.'
+          }));
+
+          await loadUserPasses();
+          updateUI();
+        } catch (err) {
+          console.error(err);
+          showToast('Connecting to Render backend... refresh in 10s if waking up');
+        }
+      }
+
+      function renderIdDropdown() {
+        const list = dbIdsByRole[activeRole] || [];
+        dbCountBadge.textContent = `${list.length} synced`;
+        idDropdownItems.innerHTML = '';
+        list.forEach((item) => {
+          const li = document.createElement('li');
+          li.setAttribute('role', 'menuitem');
+          const isSelected = activeDbUser && item.id === activeDbUser.id;
+          li.className = `px-3.5 py-2.5 flex items-center justify-between gap-2 cursor-pointer transition-colors duration-state-change ${isSelected ? 'bg-surface-container-low' : 'hover:bg-surface-container-low'}`;
+          li.innerHTML = `
+            <div class="flex flex-col">
+              <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface">${item.campus_id}</span>
+              <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">${item.name} · ${item.dept}</span>
+            </div>
+            ${isSelected ? '<span class="material-symbols-outlined text-[18px] text-on-surface" aria-hidden="true">check</span>' : ''}
+          `;
+          li.addEventListener('click', async () => {
+            activeDbUser = item;
+            localStorage.setItem('qp_active_user', JSON.stringify(activeDbUser));
+            idMenu.setAttribute('hidden', '');
+            idBtn.setAttribute('aria-expanded', 'false');
+            await loadUserPasses();
+            updateUI();
+            showToast(`Loaded DB profile ${item.campus_id}`);
+          });
+          idDropdownItems.appendChild(li);
+        });
+      }
+
+      const recapModal = document.getElementById('recapModal');
+      function closeRecapModal() {
+        recapModal.classList.add('hidden');
+        recapModal.classList.remove('flex');
+      }
+      document.getElementById('closeRecapModalBtn').addEventListener('click', closeRecapModal);
+      document.getElementById('doneRecapModalBtn').addEventListener('click', closeRecapModal);
+
+      function renderEvents() {
+        const myPassCount = Object.keys(userRegistrationsMap).length;
+        myRegisteredBtnText.textContent = `My Passes (${myPassCount})`;
+
+        const isCompletedTab = activeCategory === 'Completed';
+        const sourceList = isCompletedTab ? completedEventsData : eventsData;
+
+        const filtered = sourceList.filter((ev) => {
+          const matchesCat = isCompletedTab || activeCategory === 'All' || ev.category === activeCategory;
+          const matchesPasses = isCompletedTab || !onlyMyPasses || Boolean(userRegistrationsMap[ev.id]);
+          const q = searchQuery.trim().toLowerCase();
+          const matchesSearch = !q || ev.title.toLowerCase().includes(q) || ev.location.toLowerCase().includes(q) || ev.organizerId.toLowerCase().includes(q);
+          return matchesCat && matchesPasses && matchesSearch;
+        });
+
+        if (filtered.length === 0) {
+          eventsGrid.innerHTML = `
+            <div class="col-span-full bg-surface-container-lowest border border-outline-variant rounded-lg p-gutter-xl text-center flex flex-col items-center gap-gutter-sm">
+              <span class="material-symbols-outlined text-[32px] text-on-surface-variant" aria-hidden="true">event_busy</span>
+              <p data-design-text-token="title-md" class="font-title text-title-md text-on-surface">No matching campus events</p>
+              <p data-design-text-token="body-md" class="font-body text-body-md text-on-surface-variant">Try clearing your category filter or search query.</p>
+            </div>
+          `;
+          return;
+        }
+
+        eventsGrid.innerHTML = '';
+        filtered.forEach((ev) => {
+          const card = document.createElement('article');
+          card.setAttribute('data-component-id', 'card-action');
+          card.setAttribute('data-component-type', 'card');
+          card.setAttribute('data-component-variant', 'action');
+          card.className = 'h-full bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden shadow-sm flex flex-col justify-between transition-transform duration-state-change ease-state-change hover:-translate-y-0.5';
+
+          if (isCompletedTab) {
+            card.innerHTML = `
+              <div>
+                <div class="relative h-48 w-full bg-surface-container">
+                  <img src="${ev.image}" alt="${ev.title}" class="w-full h-full object-cover" />
+                </div>
+                <div class="p-gutter-md flex flex-col gap-gutter-sm">
+                  <header class="flex flex-col gap-1">
+                    <div class="flex items-center justify-between gap-2">
+                      <span data-design-text-token="label-sm" class="font-label text-label-sm text-on-surface bg-surface-container-low px-2.5 py-1 rounded-full">${ev.category}</span>
+                      <span data-design-text-token="label-sm" class="font-label text-label-sm inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary text-on-secondary">
+                        <span class="material-symbols-outlined text-[14px]" aria-hidden="true">task_alt</span>
+                        Completed
+                      </span>
+                    </div>
+                    <h3 data-design-text-token="title-lg" class="font-title text-title-lg text-on-surface mt-1">${ev.title}</h3>
+                    <p data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">${ev.time} · ${ev.location}</p>
+                  </header>
+                  <p data-design-text-token="body-md" class="font-body text-body-md text-on-surface-variant line-clamp-2 text-pretty">${ev.description}</p>
+                </div>
+              </div>
+              <footer class="px-gutter-md pb-gutter-md pt-gutter-sm border-t border-outline-variant/50 flex items-center justify-between gap-3">
+                <div class="flex flex-col">
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface tabular-nums">${ev.participants} participated</span>
+                  <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface-variant">Host: ${ev.organizerId}</span>
+                </div>
+                <button
+                  type="button"
+                  data-recap-id="${ev.id}"
+                  class="view-recap-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-primary text-on-primary hover:bg-primary-container font-label text-label-md whitespace-nowrap transition-colors duration-state-change"
+                >
+                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true">emoji_events</span>
+                  <span>View Recap &amp; Winners</span>
+                </button>
+              </footer>
+            `;
+          } else {
+            const existingReg = userRegistrationsMap[ev.id];
+            const isRegistered = Boolean(existingReg);
+            const spotsLeft = Math.max(0, ev.capacity - ev.registered);
+            const isUrgent = spotsLeft > 0 && spotsLeft <= 15;
+
+            const passBanner = isRegistered
+              ? `<div class="mt-2 px-3 py-1.5 rounded-md bg-inverse-surface text-inverse-on-surface flex items-center justify-between text-xs font-mono">
+                   <span>${existingReg.is_waitlist ? 'WAITLIST PASS' : 'QR PASS'}: <strong>${existingReg.pass_code}</strong></span>
+                   <a href="profile.html" class="underline text-primary">Open Wallet →</a>
+                 </div>`
+              : '';
+
+            card.innerHTML = `
+              <div>
+                <div class="relative h-48 w-full bg-surface-container">
+                  <img src="${ev.image}" alt="${ev.title}" class="w-full h-full object-cover" />
+                </div>
+                <div class="p-gutter-md flex flex-col gap-gutter-sm">
+                  <header class="flex flex-col gap-1">
+                    <div class="flex items-center justify-between gap-2">
+                      <span data-design-text-token="label-sm" class="font-label text-label-sm text-on-surface bg-surface-container-low px-2.5 py-1 rounded-full">${ev.category}</span>
+                      <span data-design-text-token="mono-sm" class="font-mono text-mono-sm ${isUrgent ? 'text-on-surface' : 'text-on-surface-variant'} tabular-nums">
+                        ${spotsLeft === 0 ? `Full (${ev.waitlistCount} waitlisted)` : `${spotsLeft} spots left`}
+                      </span>
+                    </div>
+                    <h3 data-design-text-token="title-lg" class="font-title text-title-lg text-on-surface mt-1">${ev.title}</h3>
+                    <p data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">${ev.time} · ${ev.location}</p>
+                  </header>
+                  <p data-design-text-token="body-md" class="font-body text-body-md text-on-surface-variant line-clamp-2 text-pretty">${ev.description}</p>
+                  ${passBanner}
+                </div>
+              </div>
+              <footer class="px-gutter-md pb-gutter-md pt-gutter-sm border-t border-outline-variant/50 flex items-center justify-between gap-3">
+                <div class="flex flex-col">
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface tabular-nums">${ev.registered} / ${ev.capacity} going</span>
+                  <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface-variant">Host: ${ev.organizerId}</span>
+                </div>
+                <button
+                  type="button"
+                  data-event-id="${ev.id}"
+                  class="register-toggle-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-md font-label text-label-lg whitespace-nowrap transition-colors duration-state-change ${
+                    isRegistered
+                      ? 'bg-success text-on-success hover:bg-success/90'
+                      : 'bg-primary text-on-primary hover:bg-primary-container'
+                  }"
+                >
+                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true">${isRegistered ? 'check_circle' : 'bolt'}</span>
+                  <span data-design-text-token="label-lg">${isRegistered ? (existingReg.is_waitlist ? 'Waitlisted (Cancel)' : 'Registered') : (spotsLeft === 0 ? 'Join Waitlist' : 'Register Now')}</span>
+                </button>
+              </footer>
+            `;
+          }
+
+          eventsGrid.appendChild(card);
+        });
+
+        document.querySelectorAll('.view-recap-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-recap-id');
+            const ev = completedEventsData.find((item) => item.id === id);
+            if (!ev) return;
+            document.getElementById('recapModalTitle').textContent = ev.title;
+            document.getElementById('recapModalMeta').textContent = `${ev.time} · ${ev.location} · ${ev.participants} participated`;
+            document.getElementById('recapModalSummary').textContent = ev.description;
+            const list = document.getElementById('recapModalWinners');
+            list.innerHTML = '';
+            ev.winners.forEach((w) => {
+              const li = document.createElement('li');
+              li.className = 'flex items-center gap-2';
+              li.innerHTML = `<span class="material-symbols-outlined text-[16px] text-primary" aria-hidden="true">emoji_events</span><span>${w}</span>`;
+              list.appendChild(li);
+            });
+            recapModal.classList.remove('hidden');
+            recapModal.classList.add('flex');
+          });
+        });
+
+        document.querySelectorAll('.register-toggle-btn').forEach((btn) => {
+          btn.addEventListener('click', async () => {
+            if (!activeDbUser || !activeDbUser.id) {
+              showToast('Select a valid Student or Organizer ID first');
+              return;
+            }
+            const eventId = btn.getAttribute('data-event-id');
+            const ev = eventsData.find((item) => item.id === eventId);
+            if (!ev) return;
+
+            btn.disabled = true;
+            const existingReg = userRegistrationsMap[eventId];
+
+            try {
+              if (existingReg) {
+                await fetch(`${API_BASE}/api/registrations/${encodeURIComponent(existingReg.pass_code)}`, {
+                  method: 'DELETE'
+                });
+                showToast(`Cancelled pass ${existingReg.pass_code} for ${ev.title}`);
+              } else {
+                const res = await fetch(`${API_BASE}/api/registrations`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    user_id: activeDbUser.id,
+                    event_id: eventId,
+                    pass_tier: 'General Student Pass'
+                  })
+                });
+                const created = await res.json();
+                if (!res.ok) {
+                  showToast(created.error || 'Could not register');
+                } else {
+                  showToast(
+                    created.is_waitlist
+                      ? `Added to waitlist (${created.pass_code})`
+                      : `QR Pass ${created.pass_code} confirmed for ${ev.title}!`
+                  );
+                }
+              }
+              await initLiveData();
+            } catch (err) {
+              console.error(err);
+              showToast('Network error talking to backend');
+            } finally {
+              btn.disabled = false;
+            }
+          });
+        });
+      }
+
+      function updateUI() {
+        const meta = roleMeta[activeRole];
+        roleBtnIcon.textContent = meta.icon;
+        roleBtnLabel.textContent = `Role: ${meta.label}`;
+        roleBtn.className = `inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-2 rounded-md font-label text-label-md whitespace-nowrap transition-colors duration-state-change focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${meta.btnClass}`;
+
+        if (activeDbUser) {
+          idBtnLabel.textContent = activeDbUser.campus_id;
+          streakLabel.textContent = activeDbUser.streak;
+          activeUserChip.textContent = `ID: ${activeDbUser.campus_id} (${activeDbUser.name})`;
+        }
+
+        activeRoleBadge.textContent = meta.badgeText;
+        activeRoleBadge.className = `font-label text-label-sm px-2.5 py-1 rounded-full ${meta.badgeClass}`;
+
+        heroTitle.textContent = meta.heroTitle;
+        heroSubtitle.textContent = meta.heroSubtitle;
+
+        if (activeRole === 'organizer') {
+          openCreateEventBtn.classList.remove('hidden');
+          if (activeDbUser) createModalOrgBadge.textContent = `Publishing as ${activeDbUser.campus_id}`;
+        } else {
+          openCreateEventBtn.classList.add('hidden');
+        }
+
+        renderIdDropdown();
+        renderEvents();
+      }
+
+      document.querySelectorAll('.category-chip').forEach((chip) => {
+        chip.addEventListener('click', () => {
+          activeCategory = chip.getAttribute('data-category');
+          document.querySelectorAll('.category-chip').forEach((c) => {
+            const isSel = c.getAttribute('data-category') === activeCategory;
+            c.className = isSel
+              ? 'category-chip px-3.5 py-1.5 rounded-full bg-primary text-on-primary font-label text-label-md transition-colors duration-state-change'
+              : 'category-chip px-3.5 py-1.5 rounded-full bg-secondary-container border border-outline-variant text-on-secondary-container font-label text-label-md hover:bg-secondary hover:text-on-secondary transition-colors duration-state-change';
+          });
+          renderEvents();
+        });
+      });
+
+      eventSearchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        renderEvents();
+      });
+
+      myRegisteredFilterBtn.addEventListener('click', () => {
+        onlyMyPasses = !onlyMyPasses;
+        myRegisteredFilterBtn.className = onlyMyPasses
+          ? 'inline-flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-primary text-on-primary font-label text-label-lg transition-colors duration-state-change'
+          : 'inline-flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-surface-container-low text-on-surface border border-outline-variant font-label text-label-lg transition-colors duration-state-change hover:bg-surface-container';
+        renderEvents();
+      });
+
+      function closeCreateModal() {
+        createEventModal.classList.add('hidden');
+        createEventModal.classList.remove('flex');
+      }
+
+      openCreateEventBtn.addEventListener('click', () => {
+        createEventModal.classList.remove('hidden');
+        createEventModal.classList.add('flex');
+      });
+
+      document.getElementById('closeCreateModalBtn').addEventListener('click', closeCreateModal);
+      document.getElementById('cancelCreateModalBtn').addEventListener('click', closeCreateModal);
+
+      createEventForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const title = document.getElementById('newEventTitle').value.trim();
+        const category = document.getElementById('newEventCategory').value;
+        const capacity = parseInt(document.getElementById('newEventCapacity').value, 10) || 80;
+        const event_date = document.getElementById('newEventTime').value.trim();
+        const venue = document.getElementById('newEventLocation').value.trim();
+        const description = document.getElementById('newEventDesc').value.trim();
+
+        try {
+          const res = await fetch(`${API_BASE}/api/events`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              organizer_id: activeDbUser.id,
+              title,
+              category,
+              capacity,
+              event_date,
+              venue,
+              description,
+              status: 'published'
+            })
+          });
+          const data = await res.json();
+          if (!res.ok) {
+            showToast(data.error || 'Venue clash or validation error');
+            return;
+          }
+          createEventForm.reset();
+          closeCreateModal();
+          showToast(`Published "${title}" to live Supabase feed!`);
+          await initLiveData();
+        } catch (err) {
+          console.error(err);
+          showToast('Error publishing event');
+        }
+      });
+
+      initLiveData();
+    })();
+  </script>
+
+
+</body></html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuadPulse — Live QR Door Scanner | Guru Nanak University</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0..1,0" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#C8A24A',
+        'on-primary': '#10261C',
+        'primary-container': '#A88432',
+        'on-primary-container': '#10261C',
+        'secondary': '#D9B866',
+        'on-secondary': '#10261C',
+        'secondary-container': '#D9B866',
+        'on-secondary-container': '#10261C',
+        'tertiary': '#163828',
+        'on-tertiary': '#FAF6DF',
+        'tertiary-container': '#F2E394',
+        'on-tertiary-container': '#10261C',
+        'error': '#8C2D2E',
+        'on-error': '#FAF6DF',
+        'error-container': '#F7DFD8',
+        'on-error-container': '#4A1213',
+        'success': '#C8A24A',
+        'on-success': '#10261C',
+        'success-container': '#D9B866',
+        'on-success-container': '#10261C',
+        'warning': '#7A5416',
+        'on-warning': '#FAF6DF',
+        'warning-container': '#D9B866',
+        'on-warning-container': '#10261C',
+        'background': '#FAF6DF',
+        'on-background': '#10261C',
+        'surface': '#FAF6DF',
+        'surface-dim': '#EFE7B8',
+        'surface-bright': '#FDFBF0',
+        'surface-container-lowest': '#FDFBF0',
+        'surface-container-low': '#F5EFC9',
+        'surface-container': '#EFE7B8',
+        'surface-container-high': '#E8DDA3',
+        'surface-container-highest': '#DFD28E',
+        'on-surface': '#10261C',
+        'surface-variant': '#F5EFC9',
+        'on-surface-variant': '#354A3F',
+        'outline': '#C8A24A',
+        'outline-variant': '#C8A24A',
+        'inverse-surface': '#163828',
+        'inverse-on-surface': '#FAF6DF',
+        'inverse-primary': '#C8A24A',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '48px',
+        'page-margin': '24px',
+      },
+      fontFamily: {
+        'display': ['"Playfair Display"', 'sans-serif'],
+        'headline': ['"Playfair Display"', 'sans-serif'],
+        'title': ['"Lato"', 'sans-serif'],
+        'body': ['"Lato"', 'sans-serif'],
+        'label': ['"Lato"', 'sans-serif'],
+        'mono': ['"Lato"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['44px', { lineHeight: '54px', letterSpacing: '-0.44px', fontWeight: '700' }],
+        'display-lg-mobile': ['30px', { lineHeight: '38px', letterSpacing: '-0.3px', fontWeight: '700' }],
+        'headline-lg': ['32px', { lineHeight: '40px', letterSpacing: '-0.32px', fontWeight: '700' }],
+        'headline-md': ['24px', { lineHeight: '32px', letterSpacing: '-0.2px', fontWeight: '600' }],
+        'title-lg': ['20px', { lineHeight: '28px', letterSpacing: '0px', fontWeight: '700' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '700' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.1px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.56px', fontWeight: '700' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.48px', fontWeight: '700' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.44px', fontWeight: '700' }],
+        'mono-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.48px', fontWeight: '700' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '220ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <style>
+    html, body { font-family: "Lato", sans-serif; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+    .ink-shadow { box-shadow: 4px 4px 0 #162623; }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased selection:bg-primary selection:text-on-primary">
+  <div class="min-h-[1024px] flex flex-col" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <!-- Sticky Deep Forest Ink Top Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-inverse-surface text-inverse-on-surface border-b-2 border-outline-variant">
+      <div class="max-w-7xl mx-auto px-gutter-md sm:px-gutter-lg h-16 flex items-center justify-between gap-2 sm:gap-4">
+
+        <!-- Left: Brand + Role Switcher -->
+        <div class="flex items-center gap-2 sm:gap-4 min-w-0">
+          <a href="index.html" class="flex items-center gap-2.5 shrink-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-on-primary">
+            <div class="w-9 h-9 rounded-md bg-primary border border-outline-variant flex items-center justify-center">
+              <span class="material-symbols-outlined text-on-primary text-[20px]" aria-hidden="true">qr_code_scanner</span>
+            </div>
+            <div class="flex flex-col leading-tight">
+              <span data-design-text-token="title-md" class="font-headline text-title-md text-inverse-on-surface tracking-tight">QuadPulse</span>
+              <span data-design-text-token="label-sm" class="hidden sm:inline font-label text-label-sm text-surface-container-low tracking-normal">Guru Nanak University</span>
+            </div>
+          </a>
+
+          <div class="h-6 w-px bg-outline-variant/60 hidden md:block" aria-hidden="true"></div>
+
+          <!-- Role Switcher Dropdown -->
+          <div class="relative inline-block shrink-0">
+            <button id="roleDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="roleDropdownMenu" class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-2 rounded-md bg-primary text-on-primary border border-outline-variant font-label text-label-md whitespace-nowrap transition-colors duration-150 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-on-primary">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">campaign</span>
+              <span id="roleBtnLabel" data-design-text-token="label-md" class="whitespace-nowrap">Role: Organizer</span>
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">expand_more</span>
+            </button>
+
+            <ul id="roleDropdownMenu" role="menu" hidden class="absolute left-0 mt-2 w-60 rounded-lg bg-surface-container-lowest border-2 border-outline-variant ink-shadow py-1.5 z-50 text-on-surface">
+              <li role="menuitem" data-role="organizer" class="role-option px-3.5 py-2.5 flex items-center gap-2.5 hover:bg-surface-container-low cursor-pointer">
+                <span class="material-symbols-outlined text-[18px] text-on-surface" aria-hidden="true">campaign</span>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Organizer</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Organizer Studio</span>
+                </div>
+              </li>
+              <li role="menuitem" data-role="faculty" class="role-option px-3.5 py-2.5 flex items-center gap-2.5 hover:bg-surface-container-low cursor-pointer">
+                <span class="material-symbols-outlined text-[18px] text-on-surface" aria-hidden="true">co_present</span>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Faculty</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Coordinator Workspace</span>
+                </div>
+              </li>
+              <li role="menuitem" data-role="student" class="role-option px-3.5 py-2.5 flex items-center gap-2.5 hover:bg-surface-container-low cursor-pointer">
+                <span class="material-symbols-outlined text-[18px] text-on-surface" aria-hidden="true">school</span>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Student</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Campus Events Hub</span>
+                </div>
+              </li>
+              <li role="menuitem" data-role="admin" class="role-option px-3.5 py-2.5 flex items-center gap-2.5 hover:bg-surface-container-low cursor-pointer">
+                <span class="material-symbols-outlined text-[18px] text-on-surface" aria-hidden="true">admin_panel_settings</span>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Admin</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Moderation Console</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right: Notification Bell + Database ID Dropdown -->
+        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+          <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-on-secondary border border-outline-variant">
+            <span class="w-2 h-2 rounded-full bg-on-secondary" aria-hidden="true"></span>
+            <span data-design-text-token="mono-sm" class="font-mono text-mono-sm">Gate 01 Live</span>
+          </div>
+
+          <button id="notifBellBtn" type="button" aria-label="Notifications" class="relative inline-flex items-center justify-center w-9 h-9 rounded-md bg-secondary text-on-secondary border border-outline-variant hover:bg-primary transition-colors">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">notifications</span>
+            <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-tertiary border border-secondary" aria-hidden="true"></span>
+          </button>
+
+          <div class="relative inline-block shrink-0">
+            <button id="idDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="idDropdownMenu" class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-2 rounded-md bg-secondary border border-outline-variant text-on-secondary font-label text-label-md whitespace-nowrap hover:bg-primary transition-colors">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">database</span>
+              <span id="idBtnLabel" data-design-text-token="mono-sm" class="font-mono text-mono-sm whitespace-nowrap">ORG-TECH-09</span>
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">expand_more</span>
+            </button>
+
+            <ul id="idDropdownMenu" role="menu" hidden class="absolute right-0 mt-2 w-64 rounded-lg bg-surface-container-lowest border-2 border-outline-variant ink-shadow py-1.5 z-50 text-on-surface">
+              <li role="presentation" class="px-3.5 py-1.5 flex items-center justify-between border-b border-outline-variant/40 mb-1">
+                <span data-design-text-token="label-sm" class="font-label text-label-sm text-on-surface-variant uppercase">Scanner Operator</span>
+                <span id="opCountBadge" data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface">Syncing...</span>
+              </li>
+              <div id="opDropdownItems"></div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-gutter-md sm:px-gutter-lg pt-gutter-lg pb-24 flex flex-col gap-gutter-lg">
+
+      <!-- Top Navigation Breadcrumb & Event Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-gutter-sm">
+        <div class="flex flex-wrap items-center gap-2">
+          <a href="organizer.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-surface-container-lowest border border-outline-variant font-label text-label-sm text-on-surface hover:bg-surface-container-low transition-colors">
+            <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_back</span>
+            <span>Organizer Studio</span>
+          </a>
+          <a href="faculty.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-surface-container-lowest border border-outline-variant font-label text-label-sm text-on-surface hover:bg-surface-container-low transition-colors">
+            <span class="material-symbols-outlined text-[16px]" aria-hidden="true">co_present</span>
+            <span>Faculty Workspace</span>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span data-design-text-token="mono-sm" class="font-mono text-mono-sm px-3 py-1.5 rounded-full bg-secondary text-on-secondary border border-outline-variant tabular-nums">
+            <span id="checkedInCount">0</span> / <span id="totalRegisteredCount">0</span> Checked In
+          </span>
+        </div>
+      </div>
+
+      <!-- Instant Status Banner -->
+      <section id="scanStatusBanner" class="bg-primary text-on-primary border-2 border-outline-variant rounded-xl px-gutter-lg py-gutter-md ink-shadow flex flex-col sm:flex-row sm:items-center justify-between gap-gutter-sm">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-inverse-surface border border-outline-variant flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-primary text-[22px]" aria-hidden="true">verified</span>
+          </div>
+          <div class="flex flex-col">
+            <span id="statusBannerTitle" data-design-text-token="title-md" class="font-title text-title-md text-on-primary">Gate 01 Scanner Ready</span>
+            <span id="statusBannerSub" data-design-text-token="body-sm" class="font-body text-body-sm text-on-primary">Enter any pass code (e.g. QP-2026-...) or click Simulate QR Scan</span>
+          </div>
+        </div>
+        <span id="odSyncBadge" data-design-text-token="mono-sm" class="font-mono text-mono-sm px-3 py-1 rounded-full bg-inverse-surface text-inverse-on-surface border border-outline-variant shrink-0 w-fit">
+          Supabase Synced
+        </span>
+      </section>
+
+      <!-- Main Two-Column Scanner Workspace -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-start">
+
+        <!-- Left Column (7 cols): Camera Viewfinder + Manual Pass Code Fallback -->
+        <section class="lg:col-span-7 flex flex-col gap-gutter-lg">
+
+          <!-- Camera Viewfinder Frame -->
+          <div class="bg-inverse-surface text-inverse-on-surface border-2 border-outline-variant rounded-xl p-gutter-lg ink-shadow flex flex-col gap-gutter-md">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <span data-design-text-token="label-sm" class="font-label text-label-sm text-surface-container-low uppercase tracking-wider">Door Check-In Camera</span>
+                <h1 id="scannerEventTitle" data-design-text-token="headline-md" class="font-headline text-headline-md text-inverse-on-surface">Campus Event Check-In</h1>
+              </div>
+              <span id="scannerVenuePill" data-design-text-token="mono-sm" class="font-mono text-mono-sm px-2.5 py-1 rounded-full bg-secondary text-on-secondary border border-outline-variant">
+                Main Gate · Door 01
+              </span>
+            </div>
+
+            <!-- Viewfinder Frame with Scanning Corners -->
+            <div class="relative w-full h-72 sm:h-80 rounded-lg bg-tertiary border-2 border-outline-variant flex flex-col items-center justify-center p-gutter-lg overflow-hidden">
+              <!-- 4 Corner Brackets -->
+              <div class="relative w-48 h-48 sm:w-56 sm:h-56 flex flex-col items-center justify-center gap-3">
+                <div class="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-primary rounded-tl-sm" aria-hidden="true"></div>
+                <div class="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-primary rounded-tr-sm" aria-hidden="true"></div>
+                <div class="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-primary rounded-bl-sm" aria-hidden="true"></div>
+                <div class="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-primary rounded-br-sm" aria-hidden="true"></div>
+
+                <!-- Scan Line -->
+                <div class="w-40 sm:w-48 h-0.5 bg-primary" aria-hidden="true"></div>
+
+                <span class="material-symbols-outlined text-[48px] text-primary" aria-hidden="true">qr_code_2</span>
+                <span data-design-text-token="body-sm" class="font-body text-body-sm text-surface-container-low text-center">Align student VIP QR pass inside frame</span>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-gutter-sm">
+              <span data-design-text-token="body-sm" class="font-body text-body-sm text-surface-container-low">Auto-logs attendance &amp; Faculty OD verification</span>
+              <button id="simulateScanBtn" type="button" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-primary text-on-primary border border-outline-variant font-label text-label-md hover:bg-secondary transition-colors">
+                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">center_focus_strong</span>
+                <span>Simulate QR Scan</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Manual Pass Code Fallback -->
+          <div class="bg-surface-container-lowest border-2 border-outline-variant rounded-xl p-gutter-lg ink-shadow flex flex-col gap-gutter-md">
+            <div>
+              <h2 data-design-text-token="title-lg" class="font-headline text-title-lg text-on-surface">Manual Pass Code Fallback</h2>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Enter a student pass code if their screen brightness is low or camera is unavailable</p>
+            </div>
+
+            <form id="manualVerifyForm" class="flex flex-col sm:flex-row gap-gutter-sm">
+              <input id="manualPassInput" type="text" placeholder="QP-2026-1041" aria-label="Manual Pass Code" class="flex-1 px-3.5 py-2.5 rounded-md bg-surface border border-outline-variant font-mono text-mono-sm text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:ring-1 focus:ring-primary">
+              <button id="verifyPassBtn" type="submit" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-md bg-primary text-on-primary border border-outline-variant font-label text-label-md hover:bg-primary-container transition-colors whitespace-nowrap">
+                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">check_circle</span>
+                <span>Verify Pass</span>
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- Right Column (5 cols): Live Recent Scans Feed -->
+        <aside class="lg:col-span-5 bg-surface-container-lowest border-2 border-outline-variant rounded-xl ink-shadow overflow-hidden flex flex-col">
+          <div class="px-gutter-lg py-gutter-md border-b border-outline-variant flex items-center justify-between gap-2">
+            <div>
+              <h2 data-design-text-token="title-lg" class="font-headline text-title-lg text-on-surface">Recent Scans Feed</h2>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Live verified student check-ins</p>
+            </div>
+            <span data-design-text-token="label-sm" class="font-label text-label-sm px-2.5 py-1 rounded-full bg-secondary text-on-secondary">Live</span>
+          </div>
+
+          <div id="recentScansList" class="divide-y divide-outline-variant">
+            <p class="px-gutter-lg py-6 text-center font-body text-body-sm text-on-surface-variant">Loading check-in history from database...</p>
+          </div>
+        </aside>
+
+      </div>
+    </main>
+
+    <!-- Toast Feedback -->
+    <div id="toastBanner" class="fixed bottom-6 right-6 z-50 hidden items-center gap-2.5 px-4 py-3 rounded-lg bg-inverse-surface text-inverse-on-surface border border-outline-variant shadow-lg">
+      <span class="material-symbols-outlined text-[18px] text-inverse-on-surface" aria-hidden="true">check_circle</span>
+      <span id="toastMessage" data-design-text-token="body-md" class="font-body text-body-md">Action completed</span>
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      const API_BASE = "https://project-1-q5j9.onrender.com";
+
+      let operators = [];
+      let allRegistrations = [];
+      let scanFeed = [];
+
+      const roleBtn = document.getElementById('roleDropdownBtn');
+      const roleMenu = document.getElementById('roleDropdownMenu');
+      const idBtn = document.getElementById('idDropdownBtn');
+      const idMenu = document.getElementById('idDropdownMenu');
+      const idBtnLabel = document.getElementById('idBtnLabel');
+      const toastBanner = document.getElementById('toastBanner');
+      const toastMessage = document.getElementById('toastMessage');
+
+      let toastTimer = null;
+      function showToast(msg) {
+        toastMessage.textContent = msg;
+        toastBanner.classList.remove('hidden');
+        toastBanner.classList.add('flex');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastBanner.classList.add('hidden');
+          toastBanner.classList.remove('flex');
+        }, 2800);
+      }
+
+      roleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        idMenu.setAttribute('hidden', '');
+        const isOpen = !roleMenu.hasAttribute('hidden');
+        if (isOpen) roleMenu.setAttribute('hidden', '');
+        else roleMenu.removeAttribute('hidden');
+      });
+
+      idBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        roleMenu.setAttribute('hidden', '');
+        const isOpen = !idMenu.hasAttribute('hidden');
+        if (isOpen) idMenu.setAttribute('hidden', '');
+        else idMenu.removeAttribute('hidden');
+      });
+
+      document.addEventListener('click', () => {
+        roleMenu.setAttribute('hidden', '');
+        idMenu.setAttribute('hidden', '');
+      });
+
+      document.querySelectorAll('.role-option').forEach((el) => {
+        el.addEventListener('click', () => {
+          const r = el.getAttribute('data-role');
+          if (r === 'organizer') window.location.href = 'organizer.html';
+          else if (r === 'faculty') window.location.href = 'faculty.html';
+          else if (r === 'student') window.location.href = 'index.html';
+          else if (r === 'admin') window.location.href = 'admin.html';
+        });
+      });
+
+      document.getElementById('notifBellBtn').addEventListener('click', () => {
+        showToast('Door 01 scanner synced with Supabase');
+      });
+
+      async function initScannerData() {
+        try {
+          const [profilesRes, eventsRes] = await Promise.all([
+            fetch(`${API_BASE}/api/profiles`),
+            fetch(`${API_BASE}/api/events`)
+          ]);
+          const profiles = await profilesRes.json();
+          const events = await eventsRes.json();
+
+          operators = (Array.isArray(profiles) ? profiles : []).filter((p) => p.role === 'organizer' || p.role === 'faculty');
+          document.getElementById('opCountBadge').textContent = `${operators.length} synced`;
+          const opContainer = document.getElementById('opDropdownItems');
+          opContainer.innerHTML = '';
+          operators.forEach((op) => {
+            const li = document.createElement('li');
+            li.setAttribute('role', 'menuitem');
+            li.className = 'op-option px-3.5 py-2.5 hover:bg-surface-container-low cursor-pointer flex flex-col';
+            li.innerHTML = `
+              <span class="font-mono text-mono-sm text-on-surface">${op.campus_id}</span>
+              <span class="font-body text-body-sm text-on-surface-variant">${op.full_name} · ${op.role}</span>
+            `;
+            li.addEventListener('click', () => {
+              idBtnLabel.textContent = op.campus_id;
+              idMenu.setAttribute('hidden', '');
+              showToast(`Scanner operator switched to ${op.campus_id}`);
+            });
+            opContainer.appendChild(li);
+          });
+
+          if (Array.isArray(events) && events.length > 0) {
+            document.getElementById('scannerEventTitle').textContent = events[0].title;
+            document.getElementById('scannerVenuePill').textContent = `${events[0].venue || 'Main Hall'} · Door 01`;
+          }
+
+          // Fetch all registrations across profiles so we have real pass codes & checked-in counts
+          const regPromises = (Array.isArray(profiles) ? profiles : []).map((p) =>
+            fetch(`${API_BASE}/api/me/registrations?user_id=${encodeURIComponent(p.id)}`)
+              .then((r) => r.json())
+              .then((list) => (Array.isArray(list) ? list.map((item) => ({ ...item, user: p })) : []))
+              .catch(() => [])
+          );
+          const nested = await Promise.all(regPromises);
+          allRegistrations = nested.flat();
+
+          const checkedIn = allRegistrations.filter((r) => r.checked_in);
+          document.getElementById('checkedInCount').textContent = String(checkedIn.length);
+          document.getElementById('totalRegisteredCount').textContent = String(allRegistrations.length);
+
+          // Pre-fill manual input with first un-scanned pass code if available
+          const nextUnscanned = allRegistrations.find((r) => !r.checked_in);
+          if (nextUnscanned) {
+            document.getElementById('manualPassInput').value = nextUnscanned.pass_code;
+          }
+
+          scanFeed = checkedIn.slice(0, 6).map((r) => ({
+            name: (r.user && r.user.full_name) || 'Student',
+            id: (r.user && r.user.campus_id) || 'STU-2026',
+            code: r.pass_code,
+            time: 'Verified in DB'
+          }));
+
+          renderScans();
+        } catch (err) {
+          console.error(err);
+          showToast('Connecting to Render backend... refresh in 10s if waking up');
+        }
+      }
+
+      function renderScans() {
+        const container = document.getElementById('recentScansList');
+        container.innerHTML = '';
+        if (scanFeed.length === 0) {
+          container.innerHTML = `<p class="px-gutter-lg py-6 text-center font-body text-body-sm text-on-surface-variant">No passes scanned yet. Scan or verify a pass code to log entry.</p>`;
+          return;
+        }
+        scanFeed.forEach((item) => {
+          const row = document.createElement('div');
+          row.className = 'px-gutter-lg py-gutter-md flex items-center justify-between gap-gutter-sm';
+          row.innerHTML = `
+            <div class="flex flex-col gap-0.5 min-w-0">
+              <span data-design-text-token="title-md" class="font-title text-title-md text-on-surface">${item.name}</span>
+              <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface-variant">${item.id} · ${item.code}</span>
+            </div>
+            <span data-design-text-token="label-sm" class="font-label text-label-sm px-2.5 py-1 rounded-full bg-secondary text-on-secondary shrink-0">${item.time}</span>
+          `;
+          container.appendChild(row);
+        });
+      }
+
+      async function verifyPassCodeOnBackend(code) {
+        if (!code) return;
+        try {
+          const res = await fetch(`${API_BASE}/api/scanner/verify`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ pass_code: code })
+          });
+          const data = await res.json();
+
+          if (!res.ok) {
+            document.getElementById('statusBannerTitle').textContent = 'Invalid or Unknown Pass Code';
+            document.getElementById('statusBannerSub').textContent = data.error || `Pass ${code} was not found in Supabase`;
+            showToast(data.error || `Pass ${code} not found`);
+            return;
+          }
+
+          const reg = data.registration || {};
+          const u = reg.users || {};
+          const ev = reg.events || {};
+          const studentName = u.full_name || 'Verified Student';
+          const campusId = u.campus_id || 'STU-2026';
+          const eventTitle = ev.title || 'Campus Event';
+
+          document.getElementById('statusBannerTitle').textContent = data.already_checked_in
+            ? 'Already Checked In'
+            : 'Pass Verified & Attendance Logged';
+          document.getElementById('statusBannerSub').textContent = `${studentName} (${campusId}) · ${code} · ${eventTitle}`;
+          document.getElementById('odSyncBadge').textContent = 'OD Synced';
+
+          scanFeed.unshift({ name: studentName, id: campusId, code, time: 'Verified just now' });
+          if (scanFeed.length > 6) scanFeed.pop();
+          renderScans();
+          showToast(`Verified ${studentName} (${code}) in Supabase!`);
+          await initScannerData();
+        } catch (err) {
+          console.error(err);
+          showToast('Error connecting to scanner API');
+        }
+      }
+
+      document.getElementById('simulateScanBtn').addEventListener('click', async () => {
+        const nextUnscanned = allRegistrations.find((r) => !r.checked_in);
+        const codeToScan = nextUnscanned ? nextUnscanned.pass_code : document.getElementById('manualPassInput').value.trim().toUpperCase();
+        if (!codeToScan) {
+          showToast('All registered passes are already checked in! Register a new pass first.');
+          return;
+        }
+        await verifyPassCodeOnBackend(codeToScan);
+      });
+
+      document.getElementById('manualVerifyForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const code = document.getElementById('manualPassInput').value.trim().toUpperCase();
+        if (!code) return;
+        const btn = document.getElementById('verifyPassBtn');
+        btn.disabled = true;
+        await verifyPassCodeOnBackend(code);
+        document.getElementById('manualPassInput').value = '';
+        btn.disabled = false;
+      });
+
+      initScannerData();
+    })();
+  </script>
+
+
+</body></html>

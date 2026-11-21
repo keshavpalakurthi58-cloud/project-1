@@ -1,0 +1,629 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuadPulse — Organization &amp; Club Profile</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#C8A24A',
+        'on-primary': '#10261C',
+        'primary-container': '#A88432',
+        'on-primary-container': '#10261C',
+        'secondary': '#D9B866',
+        'on-secondary': '#10261C',
+        'secondary-container': '#D9B866',
+        'on-secondary-container': '#10261C',
+        'tertiary': '#163828',
+        'on-tertiary': '#FAF6DF',
+        'tertiary-container': '#F2E394',
+        'on-tertiary-container': '#10261C',
+        'error': '#8C2D2E',
+        'on-error': '#FAF6DF',
+        'error-container': '#F7DFD8',
+        'on-error-container': '#4A1213',
+        'success': '#C8A24A',
+        'on-success': '#10261C',
+        'success-container': '#D9B866',
+        'on-success-container': '#10261C',
+        'warning': '#7A5416',
+        'on-warning': '#FAF6DF',
+        'warning-container': '#D9B866',
+        'on-warning-container': '#10261C',
+        'background': '#FAF6DF',
+        'on-background': '#10261C',
+        'surface': '#FAF6DF',
+        'surface-dim': '#EFE7B8',
+        'surface-bright': '#FDFBF0',
+        'surface-container-lowest': '#FDFBF0',
+        'surface-container-low': '#F5EFC9',
+        'surface-container': '#EFE7B8',
+        'surface-container-high': '#E8DDA3',
+        'surface-container-highest': '#DFD28E',
+        'on-surface': '#10261C',
+        'surface-variant': '#F5EFC9',
+        'on-surface-variant': '#354A3F',
+        'outline': '#C8A24A',
+        'outline-variant': '#C8A24A',
+        'inverse-surface': '#163828',
+        'inverse-on-surface': '#FAF6DF',
+        'inverse-primary': '#C8A24A',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '48px',
+        'page-margin': '24px',
+      },
+      fontFamily: {
+        'display': ['"Playfair Display"', 'sans-serif'],
+        'headline': ['"Playfair Display"', 'sans-serif'],
+        'title': ['"Lato"', 'sans-serif'],
+        'body': ['"Lato"', 'sans-serif'],
+        'label': ['"Lato"', 'sans-serif'],
+        'mono': ['"Lato"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['44px', { lineHeight: '54px', letterSpacing: '-0.44px', fontWeight: '700' }],
+        'display-lg-mobile': ['30px', { lineHeight: '38px', letterSpacing: '-0.3px', fontWeight: '700' }],
+        'headline-lg': ['32px', { lineHeight: '40px', letterSpacing: '-0.32px', fontWeight: '700' }],
+        'headline-md': ['24px', { lineHeight: '32px', letterSpacing: '-0.2px', fontWeight: '600' }],
+        'title-lg': ['20px', { lineHeight: '28px', letterSpacing: '0px', fontWeight: '700' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '700' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.1px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.56px', fontWeight: '700' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.48px', fontWeight: '700' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.44px', fontWeight: '700' }],
+        'mono-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.48px', fontWeight: '700' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '220ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Lato:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+    .ink-shadow { box-shadow: 4px 4px 0 #163828; }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased selection:bg-primary selection:text-on-primary">
+  <div class="min-h-[1024px] flex flex-col" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <!-- Sticky Deep Forest Ink Top Navbar with Role Switcher & Database ID Dropdown -->
+    <header class="sticky top-0 z-40 bg-inverse-surface text-inverse-on-surface border-b-2 border-outline-variant">
+      <div class="max-w-7xl mx-auto px-gutter-md sm:px-gutter-lg h-16 flex items-center justify-between gap-gutter-sm">
+
+        <!-- Left Corner: Brand + Role Switcher Dropdown -->
+        <div class="flex items-center gap-gutter-sm sm:gap-gutter-md min-w-0">
+          <a href="index.html" class="flex items-center gap-2.5 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md">
+            <div class="w-9 h-9 rounded-md bg-primary text-on-primary border border-outline-variant flex items-center justify-center">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">bolt</span>
+            </div>
+            <div class="hidden sm:flex flex-col">
+              <span data-design-text-token="title-md" class="font-headline text-title-md text-inverse-on-surface leading-none">QuadPulse</span>
+              <span data-design-text-token="label-sm" class="font-label text-label-sm text-surface-container-low">Guru Nanak University</span>
+            </div>
+          </a>
+
+          <div class="h-6 w-px bg-outline-variant hidden sm:block" aria-hidden="true"></div>
+
+          <!-- Corner Role Switcher Dropdown -->
+          <div data-component-id="dropdown-menu-with-icon" data-component-type="dropdown-menu" data-component-variant="with-icon" class="relative inline-block shrink-0">
+            <button id="roleDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="roleDropdownMenu" class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-2 rounded-md bg-secondary text-on-secondary border border-outline-variant font-label text-label-md whitespace-nowrap hover:bg-primary transition-colors duration-state-change focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+              <span id="roleBtnIcon" class="material-symbols-outlined text-[18px]" aria-hidden="true">school</span>
+              <span id="roleBtnLabel" data-design-text-token="label-md" class="whitespace-nowrap">Role: Student</span>
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">expand_more</span>
+            </button>
+
+            <ul id="roleDropdownMenu" role="menu" hidden class="absolute left-0 mt-2 w-64 rounded-lg bg-surface-container-lowest border-2 border-outline-variant ink-shadow py-1.5 z-50 text-on-surface">
+              <li role="presentation" class="px-3.5 py-1.5">
+                <span data-design-text-token="label-sm" class="font-label text-label-sm text-on-surface-variant uppercase tracking-wider">Switch Active Role</span>
+              </li>
+              <li role="menuitem" data-role="students" class="role-option px-3.5 py-2.5 flex items-start gap-3 hover:bg-surface-container-low cursor-pointer transition-colors duration-state-change">
+                <span class="material-symbols-outlined text-[18px] text-on-surface mt-0.5" aria-hidden="true">school</span>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Student</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Browse &amp; register for events</span>
+                </div>
+              </li>
+              <li role="menuitem" data-role="faculty" class="role-option px-3.5 py-2.5 flex items-start gap-3 hover:bg-surface-container-low cursor-pointer transition-colors duration-state-change">
+                <span class="material-symbols-outlined text-[18px] text-on-surface mt-0.5" aria-hidden="true">badge</span>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Faculty</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Endorse clubs &amp; verify ODs</span>
+                </div>
+              </li>
+              <li role="menuitem" data-role="organizer" class="role-option px-3.5 py-2.5 flex items-start gap-3 hover:bg-surface-container-low cursor-pointer transition-colors duration-state-change">
+                <span class="material-symbols-outlined text-[18px] text-on-surface mt-0.5" aria-hidden="true">campaign</span>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Organizer</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Create events + register</span>
+                </div>
+              </li>
+              <li role="separator" class="my-1 border-t border-outline-variant/60"></li>
+              <li role="menuitem" data-role="admin" class="role-option px-3.5 py-2.5 flex items-start gap-3 hover:bg-surface-container-low cursor-pointer transition-colors duration-state-change">
+                <span class="material-symbols-outlined text-[18px] text-on-surface mt-0.5" aria-hidden="true">analytics</span>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Admin</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">View campus reports &amp; metrics</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right Corner: Database ID Selector Dropdown -->
+        <div class="flex items-center gap-gutter-sm shrink-0">
+          <div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-on-secondary border border-outline-variant">
+            <span class="w-2 h-2 rounded-full bg-inverse-on-surface inline-block" aria-hidden="true"></span>
+            <span data-design-text-token="label-sm" class="font-label text-label-sm">Public Club Hub</span>
+          </div>
+
+          <a href="profile.html" aria-label="My QR Wallet" class="relative inline-flex items-center justify-center w-9 h-9 rounded-md bg-secondary text-on-secondary border border-outline-variant hover:bg-surface-container-low transition-colors duration-state-change shrink-0">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">qr_code_2</span>
+          </a>
+
+          <div data-component-id="dropdown-menu-standard" data-component-type="dropdown-menu" data-component-variant="standard" class="relative inline-block shrink-0">
+            <button id="idDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="idDropdownMenu" class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-2 rounded-md bg-secondary border border-outline-variant text-on-secondary font-label text-label-md whitespace-nowrap hover:bg-primary transition-colors duration-state-change focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+              <span class="material-symbols-outlined text-[18px] text-on-secondary" aria-hidden="true">database</span>
+              <span id="idBtnLabel" data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-secondary whitespace-nowrap">STU-2026-041</span>
+              <span class="material-symbols-outlined text-[18px] text-on-secondary" aria-hidden="true">expand_more</span>
+            </button>
+
+            <ul id="idDropdownMenu" role="menu" hidden class="absolute right-0 mt-2 w-72 rounded-lg bg-surface-container-lowest border-2 border-outline-variant ink-shadow py-1.5 z-50 text-on-surface">
+              <li role="presentation" class="px-3.5 py-1.5 flex items-center justify-between border-b border-outline-variant/50 mb-1">
+                <span data-design-text-token="label-sm" class="font-label text-label-sm text-on-surface-variant uppercase tracking-wider">Fetched DB IDs</span>
+                <span id="dbCountBadge" data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface">Syncing...</span>
+              </li>
+              <div id="idDropdownItems"></div>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-gutter-md sm:px-gutter-lg pt-gutter-xl pb-24 flex flex-col gap-gutter-xl">
+
+      <!-- Breadcrumb -->
+      <div class="flex flex-wrap items-center justify-between gap-gutter-sm">
+        <a href="index.html" class="inline-flex items-center gap-1.5 font-label text-label-md text-on-surface-variant hover:text-on-surface transition-colors duration-state-change">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_back</span>
+          <span data-design-text-token="label-md">Back to Campus Feed</span>
+        </a>
+        <span data-design-text-token="mono-sm" class="font-mono text-mono-sm px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface border border-outline-variant">Club ID: ORG-TECH-09</span>
+      </div>
+
+      <!-- Deep Forest Ink Public Club Hero Spotlight -->
+      <section class="bg-inverse-surface text-inverse-on-surface border-2 border-outline-variant rounded-xl p-gutter-lg md:p-gutter-xl ink-shadow flex flex-col lg:flex-row lg:items-center justify-between gap-gutter-lg">
+        <div class="flex flex-col gap-gutter-sm max-w-2xl">
+          <div class="flex flex-wrap items-center gap-2">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm px-2.5 py-1 rounded-full bg-secondary text-on-secondary border border-outline-variant inline-flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-inverse-on-surface inline-block" aria-hidden="true"></span>
+              Verified Campus Club
+            </span>
+            <span data-design-text-token="mono-sm" class="font-mono text-mono-sm px-2.5 py-1 rounded-full bg-secondary text-on-secondary border border-outline-variant">
+              Advisor: FAC-CSE-12 (Dr. Harpreet Kaur)
+            </span>
+          </div>
+          <h1 data-design-text-token="display-lg" class="font-headline text-display-lg-mobile md:text-display-lg text-inverse-on-surface text-balance">
+            ACM GNU Chapter
+          </h1>
+          <p data-design-text-token="body-lg" class="font-body text-body-lg text-surface-container-low text-pretty">
+            Guru Nanak University’s flagship builder collective hosting 24-hour hackathons, autonomous robotics trials, and peer-led systems workshops.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-gutter-md shrink-0">
+          <div class="px-gutter-md py-3 rounded-lg bg-tertiary border border-secondary flex flex-col items-center">
+            <span id="followerCountText" data-design-text-token="headline-md" class="font-headline text-headline-md text-inverse-on-surface tabular-nums">1,284</span>
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-surface-container-low">Followers</span>
+          </div>
+          <button id="followClubBtn" type="button" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-primary text-on-primary border border-outline-variant font-label text-label-lg transition-colors duration-state-change hover:bg-primary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+            <span id="followIcon" class="material-symbols-outlined text-[20px]" aria-hidden="true">person_add</span>
+            <span id="followLabel" data-design-text-token="label-lg">Follow Club</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Core Team Member Cards -->
+      <section class="flex flex-col gap-gutter-md">
+        <div class="flex items-center justify-between gap-2">
+          <h2 data-design-text-token="headline-md" class="font-headline text-headline-md text-on-surface">Core Team</h2>
+          <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface-variant">4 Student Leads</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-md items-stretch">
+          <article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-gutter-md shadow-sm flex flex-col justify-between gap-gutter-sm">
+            <div class="flex items-center justify-between gap-2">
+              <span class="w-10 h-10 rounded-full bg-secondary text-on-secondary font-headline text-title-md flex items-center justify-center">AK</span>
+              <span data-design-text-token="label-sm" class="font-label text-label-sm px-2.5 py-0.5 rounded-full bg-primary text-on-primary border border-outline-variant">President</span>
+            </div>
+            <div>
+              <h3 data-design-text-token="title-md" class="font-headline text-title-md text-on-surface">Arjun Khanna</h3>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">B.Tech CSE · Final Year</p>
+            </div>
+          </article>
+
+          <article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-gutter-md shadow-sm flex flex-col justify-between gap-gutter-sm">
+            <div class="flex items-center justify-between gap-2">
+              <span class="w-10 h-10 rounded-full bg-secondary text-on-secondary font-headline text-title-md flex items-center justify-center">AP</span>
+              <span data-design-text-token="label-sm" class="font-label text-label-sm px-2.5 py-0.5 rounded-full bg-surface-container-low text-on-surface border border-outline-variant">Tech Lead</span>
+            </div>
+            <div>
+              <h3 data-design-text-token="title-md" class="font-headline text-title-md text-on-surface">Aarav Patel</h3>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">B.Tech CSE · Junior</p>
+            </div>
+          </article>
+
+          <article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-gutter-md shadow-sm flex flex-col justify-between gap-gutter-sm">
+            <div class="flex items-center justify-between gap-2">
+              <span class="w-10 h-10 rounded-full bg-secondary text-on-secondary font-headline text-title-md flex items-center justify-center">ML</span>
+              <span data-design-text-token="label-sm" class="font-label text-label-sm px-2.5 py-0.5 rounded-full bg-surface-container-low text-on-surface border border-outline-variant">Design Lead</span>
+            </div>
+            <div>
+              <h3 data-design-text-token="title-md" class="font-headline text-title-md text-on-surface">Maya Lin</h3>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">B.Des Interaction · Soph.</p>
+            </div>
+          </article>
+
+          <article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-gutter-md shadow-sm flex flex-col justify-between gap-gutter-sm">
+            <div class="flex items-center justify-between gap-2">
+              <span class="w-10 h-10 rounded-full bg-secondary text-on-secondary font-headline text-title-md flex items-center justify-center">RS</span>
+              <span data-design-text-token="label-sm" class="font-label text-label-sm px-2.5 py-0.5 rounded-full bg-surface-container-low text-on-surface border border-outline-variant">Operations</span>
+            </div>
+            <div>
+              <h3 data-design-text-token="title-md" class="font-headline text-title-md text-on-surface">Rohan Sharma</h3>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">B.Tech ECE · Junior</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Tabs: Upcoming Events & Past Highlights -->
+      <section class="flex flex-col gap-gutter-lg">
+        <div class="flex flex-wrap items-center justify-between gap-gutter-md border-b border-outline-variant pb-gutter-sm">
+          <div class="flex items-center gap-gutter-sm" role="tablist" aria-label="Club event tabs">
+            <button id="upcomingClubTabBtn" type="button" data-club-tab="upcoming" class="club-tab px-4 py-2 rounded-md bg-primary text-on-primary border border-outline-variant font-label text-label-md transition-colors duration-state-change">
+              Upcoming Events (2)
+            </button>
+            <button type="button" data-club-tab="past" class="club-tab px-4 py-2 rounded-md bg-surface-container-low text-on-surface border border-outline-variant font-label text-label-md hover:bg-surface-container transition-colors duration-state-change">
+              Past Highlights (2)
+            </button>
+          </div>
+          <a href="organizer.html" class="font-label text-label-md text-on-surface hover:underline inline-flex items-center gap-1">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">edit_calendar</span>
+            <span data-design-text-token="label-md">Manage in Organizer Studio</span>
+          </a>
+        </div>
+
+        <!-- Upcoming Events Panel -->
+        <div id="upcomingEventsPanel" class="grid grid-cols-1 md:grid-cols-2 gap-gutter-lg items-stretch">
+          <div class="col-span-full bg-surface-container-lowest border border-outline-variant rounded-lg p-gutter-xl text-center">
+            <p class="font-title text-title-md text-on-surface">Loading club events from database...</p>
+          </div>
+        </div>
+
+        <!-- Past Highlights Panel -->
+        <div id="pastHighlightsPanel" class="hidden grid-cols-1 md:grid-cols-2 gap-gutter-lg items-stretch">
+          <article class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="h-48 w-full bg-surface-container">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrDfYYKXjf8NvSIB1Jej399BlpJlxzeGAHF356wRPSmNnwatCkW4B5JQnZEvi91SWxRYsNu8ia81S0kc_RFj_LWBoaMLNrVLQ6HUkSXLZuH2kOlEE-W-S34iMkdrA3r8FHml6PM9ZCQJS3qTrK6sZoiB3aXR0mLb2WB8sbKek3D6ho-cZKGQA0dmLub7cv7jq-KCXClK7XnY4Bmakn4_wyenwL4cPPaBl0-iWSePfMralpEVHULu1y9gm99Yr-XN" alt="Systems &amp; UI Jam" class="w-full h-full object-cover">
+              </div>
+              <div class="p-gutter-md flex flex-col gap-gutter-sm">
+                <div class="flex items-center justify-between gap-2">
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm px-2.5 py-0.5 rounded-full bg-success-container text-on-success-container">Completed</span>
+                  <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface-variant tabular-nums">196 attended</span>
+                </div>
+                <h3 data-design-text-token="title-lg" class="font-headline text-title-lg text-on-surface">GNU Systems &amp; UI Jam</h3>
+                <p data-design-text-token="body-md" class="font-body text-body-md text-on-surface-variant">32 student teams shipped open-source campus tools in 8 hours with 94% check-in completion.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="h-48 w-full bg-surface-container">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrD-khBMJjJjmwaZjzwyZtLU7iZtWC8jVlNAz-T1e3kHvgRRmcC39jfVdhdZsrT6fyL2AxfOfQSx_9_XLZn6R536OWZh2kzii401lXiiWfudHiuRW85M09CKWeOam3w05Ffs2_nu-0Cii069L3upRgillO5q4fCHnbO8C50Vm-4OeOntIaSUxvH48_NvytOGXP4-6jpnJuZW6EJ6oXuixhNy06jvosT0QemNNeXJ7AsbHTe9L5pDzpFvKGBG" alt="Freshers Welcome Mixer" class="w-full h-full object-cover">
+              </div>
+              <div class="p-gutter-md flex flex-col gap-gutter-sm">
+                <div class="flex items-center justify-between gap-2">
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm px-2.5 py-0.5 rounded-full bg-success-container text-on-success-container">Completed</span>
+                  <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface-variant tabular-nums">310 attended</span>
+                </div>
+                <h3 data-design-text-token="title-lg" class="font-headline text-title-lg text-on-surface">Freshers Tech &amp; Music Mixer</h3>
+                <p data-design-text-token="body-md" class="font-body text-body-md text-on-surface-variant">Joint kickoff with Quad Music introducing incoming CSE and Design cohorts to campus clubs.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Toast Feedback -->
+    <div id="toastBanner" class="fixed bottom-6 right-6 z-50 hidden items-center gap-2.5 px-4 py-3 rounded-lg bg-inverse-surface text-inverse-on-surface border border-outline-variant shadow-lg">
+      <span class="material-symbols-outlined text-[18px] text-inverse-primary" aria-hidden="true">check_circle</span>
+      <span id="toastMessage" data-design-text-token="body-md" class="font-body text-body-md">Action completed</span>
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      const API_BASE = "https://project-1-q5j9.onrender.com";
+
+      const categoryImages = {
+        'Tech & Hackathons': 'https://lh3.googleusercontent.com/aida/ALJJyrDcnLs-S_Y72zm6rPNrNNxWc92xzqyEu_oSqJHzBdpcqm8YKHVIiW_xETJXiMDTEC4lnqR3vECuhpuXfEZWwr-hyDD_Bgz-g6b4xhB1jwOSeEOP8c-Tb3ihAVPskyJwZAg7JkFcD5gMxw-yH8T5ZkbhDzIc1nxISLO1OQt906nErbiircmESuy8M1iZiN8L-BSjJdcxy7Ux8wYQVWRwl3dbULJB5h1OPul9PlJIlZDUou3aIGkbWFv9yg',
+        'Engineering': 'https://lh3.googleusercontent.com/aida/ALJJyrDgT2ZV9xAB0iRZ0XU_PBDO3Zt_kQWr0P4dfoy8e2aAHCaESip9KbAoUqBhVKjTeTaugCZqEhSKiF4kPj7gK9SBK--tIaNnb_4H25cJghulpL_gn7YeZJuYBKouKETvN6Qcz5p5THLj1k3I2YWGTCg0yjT9uJPcxjve7hjx4XxIWrNVm1OLysHsnioSETBcXp1KUK8k_3ugDJUNZ-rUZLoK2xWjn3g8N1fUqQh2N_H_1rkynKVe-oxio3mIzTM',
+        'Design & Media': 'https://lh3.googleusercontent.com/aida/ALJJyrDfYYKXjf8NvSIB1Jej399BlpJlxzeGAHF356wRPSmNnwatCkW4B5JQnZEvi91SWxRYsNu8ia81S0kc_RFj_LWBoaMLNrVLQ6HUkSXLZuH2kOlEE-W-S34iMkdrA3r8FHml6PM9ZCQJS3qTrK6sZoiB3aXR0mLb2WB8sbKek3D6ho-cZKGQA0dmLub7cv7jq-KCXClK7XnY4Bmakn4_wyenwL4cPPaBl0-iWSePfMralpEVHULu1y9gm99Yr-XN',
+        'Music & Arts': 'https://lh3.googleusercontent.com/aida/ALJJyrD-khBMJjJjmwaZjzwyZtLU7iZtWC8jVlNAz-T1e3kHvgRRmcC39jfVdhdZsrT6fyL2AxfOfQSx_9_XLZn6R536OWZh2kzii401lXiiWfudHiuRW85M09CKWeOam3w05Ffs2_nu-0Cii069L3upRgillO5q4fCHnbO8C50Vm-4OeOntIaSUxvH48_NvytOGXP4-6jpnJuZW6EJ6oXuixhNy06jvosT0QemNNeXJ7AsbHTe9L5pDzpFvKGBG'
+      };
+
+      let dbIds = [];
+      let activeId = null;
+      let followers = 1284;
+      let isFollowing = false;
+
+      const roleBtn = document.getElementById('roleDropdownBtn');
+      const roleMenu = document.getElementById('roleDropdownMenu');
+      const idBtn = document.getElementById('idDropdownBtn');
+      const idMenu = document.getElementById('idDropdownMenu');
+      const idBtnLabel = document.getElementById('idBtnLabel');
+      const idDropdownItems = document.getElementById('idDropdownItems');
+      const toastBanner = document.getElementById('toastBanner');
+      const toastMessage = document.getElementById('toastMessage');
+
+      let toastTimer = null;
+      function showToast(msg) {
+        toastMessage.textContent = msg;
+        toastBanner.classList.remove('hidden');
+        toastBanner.classList.add('flex');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastBanner.classList.add('hidden');
+          toastBanner.classList.remove('flex');
+        }, 2600);
+      }
+
+      function toggleMenu(btn, menu, otherBtn, otherMenu) {
+        const isOpen = !menu.hasAttribute('hidden');
+        if (otherMenu) {
+          otherMenu.setAttribute('hidden', '');
+          otherBtn.setAttribute('aria-expanded', 'false');
+        }
+        if (isOpen) {
+          menu.setAttribute('hidden', '');
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          menu.removeAttribute('hidden');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      roleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu(roleBtn, roleMenu, idBtn, idMenu);
+      });
+
+      idBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu(idBtn, idMenu, roleBtn, roleMenu);
+      });
+
+      document.addEventListener('click', () => {
+        roleMenu.setAttribute('hidden', '');
+        roleBtn.setAttribute('aria-expanded', 'false');
+        idMenu.setAttribute('hidden', '');
+        idBtn.setAttribute('aria-expanded', 'false');
+      });
+
+      document.querySelectorAll('.role-option').forEach((el) => {
+        el.addEventListener('click', () => {
+          const nextRole = el.getAttribute('data-role');
+          if (nextRole === 'students') {
+            window.location.href = 'index.html';
+            return;
+          }
+          if (nextRole === 'faculty') {
+            window.location.href = 'faculty.html';
+            return;
+          }
+          if (nextRole === 'organizer') {
+            window.location.href = 'organizer.html';
+            return;
+          }
+          if (nextRole === 'admin') {
+            window.location.href = 'admin.html';
+            return;
+          }
+        });
+      });
+
+      async function initClubData() {
+        try {
+          const [profilesRes, eventsRes] = await Promise.all([
+            fetch(`${API_BASE}/api/profiles`),
+            fetch(`${API_BASE}/api/events`)
+          ]);
+          const profiles = await profilesRes.json();
+          const allEvents = await eventsRes.json();
+
+          dbIds = (Array.isArray(profiles) ? profiles : []).map((p) => ({
+            id: p.id,
+            campus_id: p.campus_id,
+            name: p.full_name || p.email,
+            dept: p.department || p.role
+          }));
+
+          const saved = JSON.parse(localStorage.getItem('qp_active_user') || 'null');
+          activeId = (saved && dbIds.find((d) => d.id === saved.id)) || dbIds[0] || { campus_id: 'STU-2026-041', name: 'Aarav Patel', dept: 'CS Junior' };
+          document.getElementById('dbCountBadge').textContent = `${dbIds.length} synced`;
+          renderIdDropdown();
+
+          const clubEvents = (Array.isArray(allEvents) ? allEvents : []).filter((ev) => {
+            const orgCampus = ev.users && ev.users.campus_id;
+            return !orgCampus || orgCampus === 'ORG-TECH-09';
+          });
+
+          const listToShow = clubEvents.length ? clubEvents : allEvents;
+          document.getElementById('upcomingClubTabBtn').textContent = `Upcoming Events (${listToShow.length})`;
+          renderClubUpcomingEvents(listToShow);
+        } catch (err) {
+          console.error(err);
+          showToast('Connecting to Render backend... refresh in 10s if waking up');
+        }
+      }
+
+      function renderClubUpcomingEvents(events) {
+        const panel = document.getElementById('upcomingEventsPanel');
+        panel.innerHTML = '';
+        events.forEach((ev) => {
+          const regCount = ev.registered_count || 0;
+          const cap = ev.capacity || 50;
+          const spotsLeft = Math.max(0, cap - regCount);
+          const img = categoryImages[ev.category] || categoryImages['Tech & Hackathons'];
+
+          const article = document.createElement('article');
+          article.className = 'bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden shadow-sm flex flex-col justify-between';
+          article.innerHTML = `
+            <div>
+              <div class="h-48 w-full bg-surface-container">
+                <img src="${img}" alt="${ev.title}" class="w-full h-full object-cover">
+              </div>
+              <div class="p-gutter-md flex flex-col gap-gutter-sm">
+                <div class="flex items-center justify-between gap-2">
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm px-2.5 py-0.5 rounded-full bg-secondary text-on-secondary">${ev.category || 'Tech & Hackathons'}</span>
+                  <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface tabular-nums">${spotsLeft === 0 ? 'Full' : `${spotsLeft} spots left`}</span>
+                </div>
+                <h3 data-design-text-token="title-lg" class="font-headline text-title-lg text-on-surface">${ev.title}</h3>
+                <p data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">${ev.event_date || 'Upcoming'} · ${ev.venue || 'GNU Campus'}</p>
+                <p data-design-text-token="body-md" class="font-body text-body-md text-on-surface-variant">${ev.description || 'Official ACM GNU Chapter session.'}</p>
+              </div>
+            </div>
+            <footer class="px-gutter-md pb-gutter-md pt-gutter-sm border-t border-outline-variant flex items-center justify-between gap-3">
+              <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface-variant tabular-nums">${regCount} / ${cap} going</span>
+              <a href="register.html?event_id=${encodeURIComponent(ev.id)}" class="px-4 py-2 rounded-md bg-primary text-on-primary border border-outline-variant font-label text-label-md hover:bg-primary-container transition-colors duration-state-change">Get Digital Pass</a>
+            </footer>
+          `;
+          panel.appendChild(article);
+        });
+      }
+
+      function renderIdDropdown() {
+        if (!activeId) return;
+        idBtnLabel.textContent = activeId.campus_id;
+        idDropdownItems.innerHTML = '';
+        dbIds.forEach((item) => {
+          const li = document.createElement('li');
+          li.setAttribute('role', 'menuitem');
+          const isSel = item.campus_id === activeId.campus_id;
+          li.className = `px-3.5 py-2.5 flex items-center justify-between gap-2 cursor-pointer transition-colors duration-state-change ${isSel ? 'bg-surface-container-low' : 'hover:bg-surface-container-low'}`;
+          li.innerHTML = `
+            <div class="flex flex-col">
+              <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface">${item.campus_id}</span>
+              <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">${item.name} · ${item.dept}</span>
+            </div>
+            ${isSel ? '<span class="material-symbols-outlined text-[18px] text-on-surface" aria-hidden="true">check</span>' : ''}
+          `;
+          li.addEventListener('click', () => {
+            activeId = item;
+            localStorage.setItem('qp_active_user', JSON.stringify(activeId));
+            idMenu.setAttribute('hidden', '');
+            idBtn.setAttribute('aria-expanded', 'false');
+            renderIdDropdown();
+            showToast(`Loaded DB profile ${item.campus_id}`);
+          });
+          idDropdownItems.appendChild(li);
+        });
+      }
+
+      document.getElementById('followClubBtn').addEventListener('click', () => {
+        isFollowing = !isFollowing;
+        followers += isFollowing ? 1 : -1;
+        document.getElementById('followerCountText').textContent = followers.toLocaleString();
+        document.getElementById('followLabel').textContent = isFollowing ? 'Following' : 'Follow Club';
+        document.getElementById('followIcon').textContent = isFollowing ? 'check' : 'person_add';
+        document.getElementById('followClubBtn').className = isFollowing
+          ? 'inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-secondary text-on-secondary border border-outline-variant font-label text-label-lg transition-colors duration-state-change'
+          : 'inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-primary text-on-primary border border-outline-variant font-label text-label-lg transition-colors duration-state-change hover:bg-primary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary';
+        showToast(isFollowing ? 'Following ACM GNU Chapter' : 'Unfollowed ACM GNU Chapter');
+      });
+
+      document.querySelectorAll('.club-tab').forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const target = tab.getAttribute('data-club-tab');
+          document.querySelectorAll('.club-tab').forEach((t) => {
+            const active = t.getAttribute('data-club-tab') === target;
+            t.className = active
+              ? 'club-tab px-4 py-2 rounded-md bg-primary text-on-primary border border-outline-variant font-label text-label-md transition-colors duration-state-change'
+              : 'club-tab px-4 py-2 rounded-md bg-surface-container-low text-on-surface border border-outline-variant font-label text-label-md hover:bg-surface-container transition-colors duration-state-change';
+          });
+          const upcoming = document.getElementById('upcomingEventsPanel');
+          const past = document.getElementById('pastHighlightsPanel');
+          if (target === 'upcoming') {
+            upcoming.classList.remove('hidden');
+            upcoming.classList.add('grid');
+            past.classList.add('hidden');
+            past.classList.remove('grid');
+          } else {
+            past.classList.remove('hidden');
+            past.classList.add('grid');
+            upcoming.classList.add('hidden');
+            upcoming.classList.remove('grid');
+          }
+        });
+      });
+
+      initClubData();
+    })();
+  </script>
+
+
+</body></html>

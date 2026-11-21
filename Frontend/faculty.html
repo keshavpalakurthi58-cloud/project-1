@@ -1,0 +1,731 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuadPulse — Faculty Coordinator Workspace</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#C8A24A',
+        'on-primary': '#10261C',
+        'primary-container': '#A88432',
+        'on-primary-container': '#10261C',
+        'secondary': '#D9B866',
+        'on-secondary': '#10261C',
+        'secondary-container': '#D9B866',
+        'on-secondary-container': '#10261C',
+        'tertiary': '#163828',
+        'on-tertiary': '#FAF6DF',
+        'tertiary-container': '#F2E394',
+        'on-tertiary-container': '#10261C',
+        'error': '#8C2D2E',
+        'on-error': '#FAF6DF',
+        'error-container': '#F7DFD8',
+        'on-error-container': '#4A1213',
+        'success': '#C8A24A',
+        'on-success': '#10261C',
+        'success-container': '#D9B866',
+        'on-success-container': '#10261C',
+        'warning': '#7A5416',
+        'on-warning': '#FAF6DF',
+        'warning-container': '#D9B866',
+        'on-warning-container': '#10261C',
+        'background': '#FAF6DF',
+        'on-background': '#10261C',
+        'surface': '#FAF6DF',
+        'surface-dim': '#EFE7B8',
+        'surface-bright': '#FDFBF0',
+        'surface-container-lowest': '#FDFBF0',
+        'surface-container-low': '#F5EFC9',
+        'surface-container': '#EFE7B8',
+        'surface-container-high': '#E8DDA3',
+        'surface-container-highest': '#DFD28E',
+        'on-surface': '#10261C',
+        'surface-variant': '#F5EFC9',
+        'on-surface-variant': '#354A3F',
+        'outline': '#C8A24A',
+        'outline-variant': '#C8A24A',
+        'inverse-surface': '#163828',
+        'inverse-on-surface': '#FAF6DF',
+        'inverse-primary': '#C8A24A',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '48px',
+        'page-margin': '24px',
+      },
+      fontFamily: {
+        'display': ['"Playfair Display"', 'sans-serif'],
+        'headline': ['"Playfair Display"', 'sans-serif'],
+        'title': ['"Lato"', 'sans-serif'],
+        'body': ['"Lato"', 'sans-serif'],
+        'label': ['"Lato"', 'sans-serif'],
+        'mono': ['"Lato"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['44px', { lineHeight: '54px', letterSpacing: '-0.44px', fontWeight: '700' }],
+        'display-lg-mobile': ['30px', { lineHeight: '38px', letterSpacing: '-0.3px', fontWeight: '700' }],
+        'headline-lg': ['32px', { lineHeight: '40px', letterSpacing: '-0.32px', fontWeight: '700' }],
+        'headline-md': ['24px', { lineHeight: '32px', letterSpacing: '-0.2px', fontWeight: '600' }],
+        'title-lg': ['20px', { lineHeight: '28px', letterSpacing: '0px', fontWeight: '700' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '700' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.1px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.56px', fontWeight: '700' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.48px', fontWeight: '700' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.44px', fontWeight: '700' }],
+        'mono-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.48px', fontWeight: '700' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '220ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Lato:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+    .ink-shadow { box-shadow: 4px 4px 0 #163828; }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased selection:bg-primary selection:text-on-primary">
+  <div class="min-h-[1024px] flex flex-col" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <!-- Sticky Deep Forest Ink Top Navbar with Role Switcher & Database ID Dropdown -->
+    <header class="sticky top-0 z-40 bg-inverse-surface text-inverse-on-surface border-b-2 border-outline-variant">
+      <div class="max-w-7xl mx-auto px-gutter-md sm:px-gutter-lg h-16 flex items-center justify-between gap-gutter-sm">
+
+        <!-- Left Corner: Brand + Role Switcher Dropdown -->
+        <div class="flex items-center gap-gutter-sm sm:gap-gutter-md min-w-0">
+          <a href="index.html" class="flex items-center gap-2.5 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md">
+            <div class="w-9 h-9 rounded-md bg-primary text-on-primary border border-outline-variant flex items-center justify-center">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">bolt</span>
+            </div>
+            <div class="hidden sm:flex flex-col">
+              <span data-design-text-token="title-md" class="font-headline text-title-md text-inverse-on-surface leading-none">QuadPulse</span>
+              <span data-design-text-token="label-sm" class="font-label text-label-sm text-surface-container-low">Guru Nanak University</span>
+            </div>
+          </a>
+
+          <div class="h-6 w-px bg-outline-variant hidden sm:block" aria-hidden="true"></div>
+
+          <!-- Corner Role Switcher Dropdown -->
+          <div data-component-id="dropdown-menu-with-icon" data-component-type="dropdown-menu" data-component-variant="with-icon" class="relative inline-block shrink-0">
+            <button id="roleDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="roleDropdownMenu" class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-2 rounded-md bg-secondary text-on-secondary border border-outline-variant font-label text-label-md whitespace-nowrap hover:bg-primary transition-colors duration-state-change focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+              <span id="roleBtnIcon" class="material-symbols-outlined text-[18px]" aria-hidden="true">badge</span>
+              <span id="roleBtnLabel" data-design-text-token="label-md" class="whitespace-nowrap">Role: Faculty</span>
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">expand_more</span>
+            </button>
+
+            <ul id="roleDropdownMenu" role="menu" hidden class="absolute left-0 mt-2 w-64 rounded-lg bg-surface-container-lowest border-2 border-outline-variant ink-shadow py-1.5 z-50 text-on-surface">
+              <li role="presentation" class="px-3.5 py-1.5">
+                <span data-design-text-token="label-sm" class="font-label text-label-sm text-on-surface-variant uppercase tracking-wider">Switch Active Role</span>
+              </li>
+              <li role="menuitem" data-role="students" class="role-option px-3.5 py-2.5 flex items-start gap-3 hover:bg-surface-container-low cursor-pointer transition-colors duration-state-change">
+                <span class="material-symbols-outlined text-[18px] text-on-surface mt-0.5" aria-hidden="true">school</span>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Student</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Browse &amp; register for events</span>
+                </div>
+              </li>
+              <li role="menuitem" data-role="faculty" class="role-option px-3.5 py-2.5 flex items-start gap-3 hover:bg-surface-container-low cursor-pointer transition-colors duration-state-change">
+                <span class="material-symbols-outlined text-[18px] text-on-surface mt-0.5" aria-hidden="true">badge</span>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Faculty</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Endorse clubs &amp; verify ODs</span>
+                </div>
+              </li>
+              <li role="menuitem" data-role="organizer" class="role-option px-3.5 py-2.5 flex items-start gap-3 hover:bg-surface-container-low cursor-pointer transition-colors duration-state-change">
+                <span class="material-symbols-outlined text-[18px] text-on-surface mt-0.5" aria-hidden="true">campaign</span>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Organizer</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Create events + register</span>
+                </div>
+              </li>
+              <li role="separator" class="my-1 border-t border-outline-variant/60"></li>
+              <li role="menuitem" data-role="admin" class="role-option px-3.5 py-2.5 flex items-start gap-3 hover:bg-surface-container-low cursor-pointer transition-colors duration-state-change">
+                <span class="material-symbols-outlined text-[18px] text-on-surface mt-0.5" aria-hidden="true">analytics</span>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-on-surface">Admin</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">View campus reports &amp; metrics</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right Corner: Live Indicator + Database ID Selector Dropdown -->
+        <div class="flex items-center gap-gutter-sm shrink-0">
+          <div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-on-secondary border border-outline-variant">
+            <span class="w-2 h-2 rounded-full bg-inverse-on-surface inline-block" aria-hidden="true"></span>
+            <span id="facultyDeptBadge" data-design-text-token="label-sm" class="font-label text-label-sm">CSE Dept · Advisor</span>
+          </div>
+
+          <a href="scanner.html" aria-label="Door QR Scanner" class="relative inline-flex items-center justify-center w-9 h-9 rounded-md bg-secondary text-on-secondary border border-outline-variant hover:bg-surface-container-low transition-colors duration-state-change shrink-0">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">qr_code_scanner</span>
+          </a>
+
+          <div data-component-id="dropdown-menu-standard" data-component-type="dropdown-menu" data-component-variant="standard" class="relative inline-block shrink-0">
+            <button id="idDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="idDropdownMenu" class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-2 rounded-md bg-secondary border border-outline-variant text-on-secondary font-label text-label-md whitespace-nowrap hover:bg-primary transition-colors duration-state-change focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+              <span class="material-symbols-outlined text-[18px] text-on-secondary" aria-hidden="true">database</span>
+              <span id="idBtnLabel" data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-secondary whitespace-nowrap">FAC-CSE-12</span>
+              <span class="material-symbols-outlined text-[18px] text-on-secondary" aria-hidden="true">expand_more</span>
+            </button>
+
+            <ul id="idDropdownMenu" role="menu" hidden class="absolute right-0 mt-2 w-72 rounded-lg bg-surface-container-lowest border-2 border-outline-variant ink-shadow py-1.5 z-50 text-on-surface">
+              <li role="presentation" class="px-3.5 py-1.5 flex items-center justify-between border-b border-outline-variant/50 mb-1">
+                <span data-design-text-token="label-sm" class="font-label text-label-sm text-on-surface-variant uppercase tracking-wider">Fetched DB IDs</span>
+                <span id="dbCountBadge" data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface">Syncing...</span>
+              </li>
+              <div id="idDropdownItems"></div>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-gutter-md sm:px-gutter-lg pt-gutter-xl pb-24 flex flex-col gap-gutter-xl">
+
+      <!-- Deep Forest Ink Faculty Profile Spotlight -->
+      <section class="bg-inverse-surface text-inverse-on-surface border-2 border-outline-variant rounded-xl p-gutter-lg md:p-gutter-xl ink-shadow flex flex-col lg:flex-row lg:items-center justify-between gap-gutter-lg">
+        <div class="flex flex-col gap-gutter-sm max-w-2xl">
+          <div class="flex flex-wrap items-center gap-2">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm px-2.5 py-1 rounded-full bg-secondary text-on-secondary border border-outline-variant inline-flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-inverse-on-surface inline-block" aria-hidden="true"></span>
+              Faculty Coordinator · Endorse &amp; Verify
+            </span>
+            <span id="activeFacultyChip" data-design-text-token="mono-sm" class="font-mono text-mono-sm px-2.5 py-1 rounded-full bg-secondary text-on-secondary border border-outline-variant">
+              ID: FAC-CSE-12 (Dr. Harpreet Kaur)
+            </span>
+          </div>
+          <h1 data-design-text-token="display-lg" class="font-headline text-display-lg-mobile md:text-display-lg text-inverse-on-surface text-balance">
+            Faculty coordinator workspace
+          </h1>
+          <p data-design-text-token="body-lg" class="font-body text-body-lg text-surface-container-low text-pretty">
+            Review student club event proposals, issue faculty endorsements, and verify On-Duty (OD) attendance directly from door check-ins.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-gutter-sm shrink-0">
+          <a href="scanner.html" class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-secondary text-on-secondary border border-outline-variant font-label text-label-lg transition-colors duration-state-change hover:bg-surface-container-low">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">qr_code_scanner</span>
+            <span data-design-text-token="label-lg">Launch QR Scanner</span>
+          </a>
+          <a href="organization.html" class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-secondary text-on-secondary border border-outline-variant font-label text-label-lg transition-colors duration-state-change hover:bg-primary">
+            <span class="material-symbols-outlined text-[18px] text-on-secondary" aria-hidden="true">groups</span>
+            <span data-design-text-token="label-lg">View ORG-TECH-09</span>
+          </a>
+          <button id="verifyAllOdBtn" type="button" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-primary text-on-primary border border-outline-variant font-label text-label-lg transition-colors duration-state-change hover:bg-primary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">verified</span>
+            <span data-design-text-token="label-lg">Verify Pending ODs</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- KPI Cards Strip (Events Mentored, Pending Approvals, Verified Student ODs) -->
+      <section class="grid grid-cols-1 sm:grid-cols-3 gap-gutter-md items-stretch">
+        <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-surface-container-lowest border border-outline-variant rounded-lg p-gutter-lg shadow-sm flex flex-col justify-between gap-gutter-sm">
+          <header class="flex items-start justify-between gap-2">
+            <h2 data-design-text-token="label-md" class="font-label text-label-md text-on-surface-variant">Events Mentored</h2>
+            <span class="material-symbols-outlined text-on-surface text-[22px]" aria-hidden="true">event_note</span>
+          </header>
+          <div>
+            <p id="kpiMentoredCount" data-design-text-token="headline-lg" class="font-headline text-headline-lg text-on-surface tabular-nums">0</p>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Fall 2026 · Faculty Endorsed</p>
+          </div>
+        </article>
+
+        <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-surface-container-lowest border border-outline-variant rounded-lg p-gutter-lg shadow-sm flex flex-col justify-between gap-gutter-sm">
+          <header class="flex items-start justify-between gap-2">
+            <h2 data-design-text-token="label-md" class="font-label text-label-md text-on-surface-variant">Pending Approvals</h2>
+            <span class="material-symbols-outlined text-on-surface text-[22px]" aria-hidden="true">pending_actions</span>
+          </header>
+          <div>
+            <p id="kpiPendingEndorsements" data-design-text-token="headline-lg" class="font-headline text-headline-lg text-on-surface tabular-nums">0</p>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Club proposals awaiting sign-off</p>
+          </div>
+        </article>
+
+        <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-surface-container-lowest border border-outline-variant rounded-lg p-gutter-lg shadow-sm flex flex-col justify-between gap-gutter-sm">
+          <header class="flex items-start justify-between gap-2">
+            <h2 data-design-text-token="label-md" class="font-label text-label-md text-on-surface-variant">Verified Student ODs</h2>
+            <span class="material-symbols-outlined text-on-surface text-[22px]" aria-hidden="true">how_to_reg</span>
+          </header>
+          <div>
+            <p id="kpiVerifiedOds" data-design-text-token="headline-lg" class="font-headline text-headline-lg text-on-surface tabular-nums">0</p>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Synced with Dept Attendance</p>
+          </div>
+        </article>
+      </section>
+
+      <!-- Club Event Endorsement Queue -->
+      <section class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-sm overflow-hidden flex flex-col">
+        <div class="px-gutter-lg py-gutter-md border-b border-outline-variant flex flex-wrap items-center justify-between gap-gutter-sm">
+          <div>
+            <h2 data-design-text-token="title-lg" class="font-headline text-title-lg text-on-surface">Club Event Endorsement Queue</h2>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Approve student club proposals or request schedule and budget adjustments</p>
+          </div>
+          <span id="endorseQueueBadge" data-design-text-token="mono-sm" class="font-mono text-mono-sm px-2.5 py-1 rounded-full bg-secondary text-on-secondary tabular-nums">Syncing...</span>
+        </div>
+
+        <div id="endorsementQueueList" class="divide-y divide-outline-variant">
+          <p class="px-gutter-lg py-6 text-center font-body text-body-md text-on-surface-variant">Loading proposals from Supabase...</p>
+        </div>
+      </section>
+
+      <!-- Attendance / OD Verification Table -->
+      <section class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-sm overflow-hidden flex flex-col">
+        <div class="px-gutter-lg py-gutter-md border-b border-outline-variant flex flex-col sm:flex-row sm:items-center justify-between gap-gutter-sm">
+          <div>
+            <h2 data-design-text-token="title-lg" class="font-headline text-title-lg text-on-surface">Attendance &amp; OD Verification</h2>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">Checked-in students verified by QR door scan and university roll number</p>
+          </div>
+          <div class="relative w-full sm:w-64">
+            <span class="material-symbols-outlined text-[18px] text-on-surface-variant absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true">search</span>
+            <input id="rollSearchInput" type="search" placeholder="Search roll no. or name..." class="w-full pl-9 pr-3 py-1.5 rounded-md bg-surface border border-outline-variant text-body-sm text-on-surface placeholder:text-on-surface-variant focus:border-outline-variant focus:ring-1 focus:ring-primary">
+          </div>
+        </div>
+
+        <div data-component-id="table-standard" data-component-type="table" data-component-variant="standard" class="w-full overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead class="bg-surface-container-low border-b border-outline-variant">
+              <tr>
+                <th scope="col" class="px-gutter-lg py-3 font-label text-label-md text-on-surface-variant">
+                  <span data-design-text-token="label-md">Roll Number</span>
+                </th>
+                <th scope="col" class="px-gutter-lg py-3 font-label text-label-md text-on-surface-variant">
+                  <span data-design-text-token="label-md">Student Name</span>
+                </th>
+                <th scope="col" class="px-gutter-lg py-3 font-label text-label-md text-on-surface-variant">
+                  <span data-design-text-token="label-md">Event Attended</span>
+                </th>
+                <th scope="col" class="px-gutter-lg py-3 font-label text-label-md text-on-surface-variant">
+                  <span data-design-text-token="label-md">Check-in</span>
+                </th>
+                <th scope="col" class="px-gutter-lg py-3 font-label text-label-md text-on-surface-variant text-right">
+                  <span data-design-text-token="label-md">OD Status</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="odVerificationTbody" class="divide-y divide-outline-variant">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Toast Feedback -->
+    <div id="toastBanner" class="fixed bottom-6 right-6 z-50 hidden items-center gap-2.5 px-4 py-3 rounded-lg bg-inverse-surface text-inverse-on-surface border border-outline-variant shadow-lg">
+      <span class="material-symbols-outlined text-[18px] text-inverse-primary" aria-hidden="true">check_circle</span>
+      <span id="toastMessage" data-design-text-token="body-md" class="font-body text-body-md">Action completed</span>
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      const API_BASE = "https://project-1-q5j9.onrender.com";
+
+      let facultyProfiles = [];
+      let proposals = [];
+      let odRecords = [];
+      let activeFaculty = null;
+      let rollSearch = '';
+
+      const roleBtn = document.getElementById('roleDropdownBtn');
+      const roleMenu = document.getElementById('roleDropdownMenu');
+      const idBtn = document.getElementById('idDropdownBtn');
+      const idMenu = document.getElementById('idDropdownMenu');
+      const idBtnLabel = document.getElementById('idBtnLabel');
+      const idDropdownItems = document.getElementById('idDropdownItems');
+      const activeFacultyChip = document.getElementById('activeFacultyChip');
+      const toastBanner = document.getElementById('toastBanner');
+      const toastMessage = document.getElementById('toastMessage');
+
+      let toastTimer = null;
+      function showToast(msg) {
+        toastMessage.textContent = msg;
+        toastBanner.classList.remove('hidden');
+        toastBanner.classList.add('flex');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastBanner.classList.add('hidden');
+          toastBanner.classList.remove('flex');
+        }, 2800);
+      }
+
+      function toggleMenu(btn, menu, otherBtn, otherMenu) {
+        const isOpen = !menu.hasAttribute('hidden');
+        if (otherMenu) {
+          otherMenu.setAttribute('hidden', '');
+          otherBtn.setAttribute('aria-expanded', 'false');
+        }
+        if (isOpen) {
+          menu.setAttribute('hidden', '');
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          menu.removeAttribute('hidden');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      roleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu(roleBtn, roleMenu, idBtn, idMenu);
+      });
+
+      idBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu(idBtn, idMenu, roleBtn, roleMenu);
+      });
+
+      document.addEventListener('click', () => {
+        roleMenu.setAttribute('hidden', '');
+        roleBtn.setAttribute('aria-expanded', 'false');
+        idMenu.setAttribute('hidden', '');
+        idBtn.setAttribute('aria-expanded', 'false');
+      });
+
+      document.querySelectorAll('.role-option').forEach((el) => {
+        el.addEventListener('click', () => {
+          const nextRole = el.getAttribute('data-role');
+          if (nextRole === 'students') {
+            window.location.href = 'index.html';
+            return;
+          }
+          if (nextRole === 'organizer') {
+            window.location.href = 'organizer.html';
+            return;
+          }
+          if (nextRole === 'admin') {
+            window.location.href = 'admin.html';
+            return;
+          }
+          roleMenu.setAttribute('hidden', '');
+          roleBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      async function initFacultyWorkspace() {
+        try {
+          const [profilesRes, eventsRes] = await Promise.all([
+            fetch(`${API_BASE}/api/profiles`),
+            fetch(`${API_BASE}/api/events`)
+          ]);
+          const profiles = await profilesRes.json();
+          const events = await eventsRes.json();
+
+          facultyProfiles = (Array.isArray(profiles) ? profiles : [])
+            .filter((p) => p.role === 'faculty')
+            .map((p) => ({
+              id: p.id,
+              campus_id: p.campus_id,
+              name: p.full_name || 'Dr. Harpreet Kaur',
+              dept: p.department || 'CSE Faculty Advisor'
+            }));
+
+          if (!facultyProfiles.length) {
+            facultyProfiles = [{ id: '', campus_id: 'FAC-CSE-12', name: 'Dr. Harpreet Kaur', dept: 'CSE Faculty Advisor' }];
+          }
+          if (!activeFaculty) activeFaculty = facultyProfiles[0];
+          document.getElementById('dbCountBadge').textContent = `${facultyProfiles.length} synced`;
+
+          proposals = (Array.isArray(events) ? events : []).map((ev) => ({
+            id: ev.id,
+            title: ev.title,
+            club: `${(ev.users && ev.users.campus_id) || 'ORG-TECH-09'} · ${(ev.users && ev.users.club_name) || ev.category || 'Campus Club'}`,
+            date: ev.event_date || 'Scheduled',
+            venue: ev.venue || 'Campus',
+            requestedOds: ev.capacity || 50,
+            status: ev.faculty_approved ? 'Approved' : (ev.status === 'changes_requested' ? 'Changes Requested' : 'Pending')
+          }));
+
+          // Fetch all registrations across profiles to populate real OD verification records
+          const regPromises = (Array.isArray(profiles) ? profiles : []).map((p) =>
+            fetch(`${API_BASE}/api/me/registrations?user_id=${encodeURIComponent(p.id)}`)
+              .then((r) => r.json())
+              .then((list) => (Array.isArray(list) ? list.map((item) => ({ ...item, user: p })) : []))
+              .catch(() => [])
+          );
+          const allRegs = (await Promise.all(regPromises)).flat();
+
+          odRecords = allRegs.map((reg) => {
+            const u = reg.users || reg.user || {};
+            const ev = reg.events || {};
+            const campusId = u.campus_id || 'STU-2026-041';
+            const rollNo = campusId.replace('STU-', '').replace(/-/g, '');
+            return {
+              passCode: reg.pass_code,
+              roll: rollNo,
+              name: u.full_name || 'Student',
+              stuId: campusId,
+              event: ev.title || 'Campus Event',
+              checkin: reg.checked_in ? 'QR Verified ✓' : 'Awaiting Scan',
+              verified: Boolean(reg.checked_in)
+            };
+          });
+
+          renderFacultyDropdown();
+          renderEndorsementQueue();
+          renderOdTable();
+        } catch (err) {
+          console.error(err);
+          showToast('Connecting to Render backend... refresh in 10s if waking up');
+        }
+      }
+
+      function renderFacultyDropdown() {
+        if (!activeFaculty) return;
+        idBtnLabel.textContent = activeFaculty.campus_id;
+        activeFacultyChip.textContent = `ID: ${activeFaculty.campus_id} (${activeFaculty.name})`;
+        document.getElementById('facultyDeptBadge').textContent = activeFaculty.dept;
+
+        idDropdownItems.innerHTML = '';
+        facultyProfiles.forEach((item) => {
+          const li = document.createElement('li');
+          li.setAttribute('role', 'menuitem');
+          const isSel = item.campus_id === activeFaculty.campus_id;
+          li.className = `px-3.5 py-2.5 flex items-center justify-between gap-2 cursor-pointer transition-colors duration-state-change ${isSel ? 'bg-surface-container-low' : 'hover:bg-surface-container-low'}`;
+          li.innerHTML = `
+            <div class="flex flex-col">
+              <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface">${item.campus_id}</span>
+              <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">${item.name} · ${item.dept}</span>
+            </div>
+            ${isSel ? '<span class="material-symbols-outlined text-[18px] text-on-surface" aria-hidden="true">check</span>' : ''}
+          `;
+          li.addEventListener('click', () => {
+            activeFaculty = item;
+            idMenu.setAttribute('hidden', '');
+            idBtn.setAttribute('aria-expanded', 'false');
+            renderFacultyDropdown();
+            showToast(`Switched Faculty ID to ${item.campus_id}`);
+          });
+          idDropdownItems.appendChild(li);
+        });
+      }
+
+      function renderEndorsementQueue() {
+        const container = document.getElementById('endorsementQueueList');
+        const pendingCount = proposals.filter((p) => p.status === 'Pending').length;
+        const approvedCount = proposals.filter((p) => p.status === 'Approved').length;
+
+        document.getElementById('kpiPendingEndorsements').textContent = String(pendingCount);
+        document.getElementById('endorseQueueBadge').textContent = `${pendingCount} pending`;
+        document.getElementById('kpiMentoredCount').textContent = String(approvedCount);
+
+        container.innerHTML = '';
+        if (proposals.length === 0) {
+          container.innerHTML = `<p class="px-gutter-lg py-6 text-center font-body text-body-md text-on-surface-variant">No club proposals in the queue.</p>`;
+          return;
+        }
+
+        proposals.forEach((prop) => {
+          const row = document.createElement('div');
+          row.className = 'px-gutter-lg py-gutter-md flex flex-col md:flex-row md:items-center justify-between gap-gutter-md hover:bg-surface-container-low/50 transition-colors duration-state-change';
+          const actionSlot = prop.status === 'Pending'
+            ? `
+              <div class="flex flex-wrap items-center gap-2 shrink-0">
+                <button type="button" data-approve-prop="${prop.id}" class="px-3.5 py-1.5 rounded-md bg-primary text-on-primary border border-outline-variant font-label text-label-sm hover:bg-primary-container transition-colors duration-state-change">Approve</button>
+                <button type="button" data-changes-prop="${prop.id}" class="px-3.5 py-1.5 rounded-md bg-secondary text-on-secondary font-label text-label-sm hover:bg-outline transition-colors duration-state-change">Request Changes</button>
+              </div>
+            `
+            : `
+              <span data-design-text-token="label-sm" class="font-label text-label-sm px-2.5 py-1 rounded-full shrink-0 ${
+                prop.status === 'Approved' ? 'bg-success-container text-on-success-container' : 'bg-warning-container text-on-warning-container'
+              }">${prop.status}</span>
+            `;
+
+          row.innerHTML = `
+            <div class="flex flex-col gap-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-2">
+                <span data-design-text-token="title-md" class="font-headline text-title-md text-on-surface">${prop.title}</span>
+                <span data-design-text-token="mono-sm" class="font-mono text-mono-sm px-2 py-0.5 rounded-full bg-surface-container-low text-on-surface border border-outline-variant">${prop.requestedOds} ODs</span>
+              </div>
+              <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-surface-variant">${prop.club} · ${prop.date} · ${prop.venue}</span>
+            </div>
+            ${actionSlot}
+          `;
+          container.appendChild(row);
+        });
+
+        document.querySelectorAll('[data-approve-prop]').forEach((btn) => {
+          btn.addEventListener('click', async () => {
+            const id = btn.getAttribute('data-approve-prop');
+            const p = proposals.find((item) => item.id === id);
+            if (!p) return;
+            await fetch(`${API_BASE}/api/events/${id}/approve`, {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ approved: true })
+            });
+            showToast(`Endorsed "${p.title}" (${activeFaculty.campus_id})`);
+            await initFacultyWorkspace();
+          });
+        });
+
+        document.querySelectorAll('[data-changes-prop]').forEach((btn) => {
+          btn.addEventListener('click', async () => {
+            const id = btn.getAttribute('data-changes-prop');
+            const p = proposals.find((item) => item.id === id);
+            if (!p) return;
+            await fetch(`${API_BASE}/api/events/${id}`, {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ status: 'changes_requested' })
+            });
+            showToast(`Requested schedule updates for "${p.title}"`);
+            await initFacultyWorkspace();
+          });
+        });
+      }
+
+      function renderOdTable() {
+        const tbody = document.getElementById('odVerificationTbody');
+        const q = rollSearch.trim().toLowerCase();
+        const filtered = odRecords.filter((r) => !q || r.roll.toLowerCase().includes(q) || r.name.toLowerCase().includes(q) || r.event.toLowerCase().includes(q));
+        const verifiedCount = odRecords.filter((r) => r.verified).length;
+
+        document.getElementById('kpiVerifiedOds').textContent = String(verifiedCount);
+        tbody.innerHTML = '';
+
+        if (filtered.length === 0) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="5" class="px-gutter-lg py-6 text-center font-body text-body-md text-on-surface-variant">
+                No student attendance records match your filter yet.
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        filtered.forEach((rec) => {
+          const tr = document.createElement('tr');
+          tr.className = 'hover:bg-surface-container-low/50 transition-colors duration-state-change';
+          tr.innerHTML = `
+            <td class="px-gutter-lg py-3.5">
+              <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface">${rec.roll}</span>
+            </td>
+            <td class="px-gutter-lg py-3.5">
+              <div class="flex flex-col">
+                <span data-design-text-token="body-md" class="font-body text-body-md text-on-surface">${rec.name}</span>
+                <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface-variant">${rec.stuId}</span>
+              </div>
+            </td>
+            <td class="px-gutter-lg py-3.5">
+              <span data-design-text-token="body-md" class="font-body text-body-md text-on-surface-variant">${rec.event}</span>
+            </td>
+            <td class="px-gutter-lg py-3.5 tabular-nums">
+              <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-on-surface-variant">${rec.checkin}</span>
+            </td>
+            <td class="px-gutter-lg py-3.5 text-right">
+              <button
+                type="button"
+                data-toggle-od="${rec.passCode}"
+                class="px-3 py-1 rounded-full font-label text-label-sm border border-outline-variant transition-colors duration-state-change ${
+                  rec.verified ? 'bg-primary text-on-primary' : 'bg-surface-container-low text-on-surface hover:bg-surface-container'
+                }"
+              >
+                ${rec.verified ? 'OD Verified' : 'Verify OD'}
+              </button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        document.querySelectorAll('[data-toggle-od]').forEach((btn) => {
+          btn.addEventListener('click', async () => {
+            const passCode = btn.getAttribute('data-toggle-od');
+            const rec = odRecords.find((r) => r.passCode === passCode);
+            if (!rec) return;
+            if (!rec.verified) {
+              await fetch(`${API_BASE}/api/scanner/verify`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ pass_code: passCode })
+              });
+              showToast(`${rec.roll} (${rec.name}) OD Verified in Supabase!`);
+              await initFacultyWorkspace();
+            } else {
+              showToast(`${rec.roll} (${rec.name}) OD is already verified`);
+            }
+          });
+        });
+      }
+
+      document.getElementById('rollSearchInput').addEventListener('input', (e) => {
+        rollSearch = e.target.value;
+        renderOdTable();
+      });
+
+      document.getElementById('verifyAllOdBtn').addEventListener('click', async () => {
+        const unverified = odRecords.filter((r) => !r.verified);
+        if (unverified.length === 0) {
+          showToast('All checked-in ODs are already verified');
+          return;
+        }
+        await Promise.all(
+          unverified.map((r) =>
+            fetch(`${API_BASE}/api/scanner/verify`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ pass_code: r.passCode })
+            })
+          )
+        );
+        showToast(`Verified ${unverified.length} pending student ODs in Supabase!`);
+        await initFacultyWorkspace();
+      });
+
+      initFacultyWorkspace();
+    })();
+  </script>
+
+
+</body></html>
